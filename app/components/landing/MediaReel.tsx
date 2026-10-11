@@ -61,7 +61,7 @@ export default function MediaReel() {
         <div className="mt-8 grid gap-4 md:grid-cols-3">
           {videos.map((video, index) => (
             <figure key={video.src} className="overflow-hidden rounded-2xl bg-[#0a0a0a]">
-              <button type="button" onClick={() => toggle(index)} className="relative block aspect-video w-full" aria-label={playing === index ? "Pause video" : "Play video"}>
+              <button type="button" onClick={() => toggle(index)} className="relative block aspect-[3/4] w-full" aria-label={playing === index ? "Pause video" : "Play video"}>
                 <video
                   ref={(element) => {
                     refs.current[index] = element;
