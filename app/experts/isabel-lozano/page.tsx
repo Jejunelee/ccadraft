@@ -4,7 +4,7 @@ import Section from "@/app/experts/isabel-lozano/components/Section"
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#f4f7f8]">
       <Header />
       <Section />
       <Footer />

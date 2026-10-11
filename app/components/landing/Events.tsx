@@ -30,14 +30,14 @@ export default function Events() {
 
         {/* Centered single event */}
         <div className="flex justify-center">
-          <div className="w-full max-w-2xl">
+          <div className="w-full max-w-xl">
             {events.map((event, i) => (
               <div 
                 key={i} 
                 className="shadow-lg group bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:hover:shadow-xl rounded-lg overflow-hidden"
               >
                 {/* Image with subtle border - responsive height */}
-                <div className="relative w-full h-[400px] xs:h-[420px] sm:h-[450px] md:h-[480px] lg:h-[520px] xl:h-[540px] overflow-hidden">
+                <div className="relative w-full h-[240px] sm:h-[280px] md:h-[320px] lg:h-[360px] overflow-hidden">
                   <Image
                     src={event.image}
                     alt={event.title}

@@ -2,168 +2,134 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 
-// STEP 1: Define Types
-// ====================
 type NavigationLink = {
   href: string;
   label: string;
   external?: boolean;
 };
 
-// STEP 2: Configure Navigation Data
-// =================================
 const NAVIGATION_LINKS: NavigationLink[] = [
-  { href: "/about", label: "About Us" },
-  { href: "/experts", label: "Our Experts" },
-  { href: "https://events.ccaconnect.co", label: "Bootcamps", external: true },
-  { href: "/training", label: "Training Programs" },
+  { href: "/#bootcamps", label: "Bootcamps & Events" },
+  { href: "/#work", label: "How We Work" },
+  { href: "/#practice", label: "Consultancy" },
+  { href: "/training", label: "Training" },
+  { href: "/experts", label: "Experts" },
+  { href: "/#partners", label: "Partners" },
+  { href: "/about", label: "About CCA" },
 ];
 
-// STEP 3: Main Header Component
-// ==============================
 export default function Header() {
   const pathname = usePathname();
-  
-  // Don't show landing header on dashboard routes
-  if (pathname?.startsWith('/dashboard')) {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  if (pathname?.startsWith("/dashboard")) {
     return null;
   }
 
-  // State Management
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+  const closeMenu = () => setIsMobileMenuOpen(false);
 
-  // Utility Functions
-  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
-    e.preventDefault();
-    const element = document.getElementById(targetId);
-    if (element) {
-      const headerOffset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      
-      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
-    }
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsMobileMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [isMobileMenuOpen]);
+
+  const isCurrent = (href: string) => {
+    if (href.startsWith("/#") || href.startsWith("http")) return false;
+    return pathname === href || pathname.startsWith(`${href}/`);
   };
 
   return (
-    <header className="w-full flex justify-center fixed top-13 left-1/2 -translate-x-1/2 z-50 px-4 font-jost">
-      <div className="w-[95%] sm:w-[92%] md:w-[90%] lg:w-[86.5%] max-w-8xl bg-[#0a0a0a] rounded-3xl px-4 sm:px-6 py-2 flex items-center justify-between shadow-lg">
-        
-        {/* STEP 4: Logo Section */}
-        <Link href="/" className="flex items-center focus:outline-none focus:ring-2 focus:ring-white/50 rounded-lg" aria-label="CCA Connect">
-          <div className="flex items-center gap-2">
-            <Image src="/logo.png" alt="CCA" width={614} height={361} className="h-8 w-auto object-contain" priority />
-          </div>
+    <header className="sticky top-0 z-50 border-b border-black/10 bg-[#f4f7f8]/90 font-jost backdrop-blur-md">
+      <div className="mx-auto flex h-[66px] w-full max-w-[1120px] items-center gap-6 px-6">
+        <Link href="/" className="mr-auto flex items-center" aria-label="CCA Connect">
+          <Image src="/logo.png" alt="CCA Connect" width={614} height={361} className="h-9 w-auto" priority />
         </Link>
 
-        {/* STEP 5: Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-2 lg:gap-4" aria-label="Main navigation">
-          <ul className="flex items-center gap-1 lg:gap-2">
-            {NAVIGATION_LINKS.map((link) => (
-              <li key={link.href}>
-                {link.external ? (
-                  <a 
-                    href={link.href} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="text-white text-sm lg:text-base hover:text-white/80 transition-colors duration-200 px-2 py-1 cursor-pointer font-jost"
-                  >
-                    {link.label}
-                  </a>
-                ) : link.href.startsWith('#') ? (
-                  <a 
-                    href={link.href} 
-                    onClick={(e) => handleScroll(e, link.href.substring(1))}
-                    className="text-white text-sm lg:text-base hover:text-white/80 transition-colors duration-200 px-2 py-1 cursor-pointer font-jost"
-                  >
-                    {link.label}
-                  </a>
-                ) : (
-                  <Link 
-                    href={link.href} 
-                    className="text-white text-sm lg:text-base hover:text-white/80 transition-colors duration-200 px-2 py-1 font-jost"
-                  >
-                    {link.label}
-                  </Link>
-                )}
-              </li>
-            ))}
-          </ul>
-          
-          {/* Desktop CTA Button */}
-          <Link 
-            href="/JoinUs" 
-            className="bg-[#AFCFE4] text-black px-10 py-2 rounded-2xl text-sm lg:text-base font-medium hover:bg-[#b8d4ef] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#A7C8E5] focus:ring-offset-2 focus:ring-offset-black font-jost"
-          >
-            Join Us
-          </Link>
+        <nav className="hidden items-center gap-4 xl:gap-5 lg:flex" aria-label="Main navigation">
+          {NAVIGATION_LINKS.map((link) =>
+            link.external ? (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-medium text-[#5c6b73] transition-colors hover:text-black"
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link
+                key={link.label}
+                href={link.href}
+                aria-current={isCurrent(link.href) ? "page" : undefined}
+                className={`text-[13px] font-medium transition-colors hover:text-black xl:text-sm ${
+                  isCurrent(link.href) ? "text-black" : "text-[#5c6b73]"
+                }`}
+              >
+                {link.label}
+              </Link>
+            )
+          )}
         </nav>
 
-        {/* STEP 6: Mobile Menu Button */}
-        <button 
-          onClick={toggleMobileMenu} 
-          className="md:hidden text-white/80 p-2 hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 rounded-lg"
-          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"} 
+        <a
+          href="https://events.ccaconnect.co"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hidden rounded-full bg-[#225475] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#1b445e] lg:inline-flex"
+        >
+          Join a bootcamp
+        </a>
+
+        <button
+          type="button"
+          onClick={() => setIsMobileMenuOpen((open) => !open)}
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full text-black lg:hidden"
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={isMobileMenuOpen}
         >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
-
-        {/* STEP 7: Mobile Navigation Menu */}
-        {isMobileMenuOpen && (
-          <div className="absolute top-16 left-4 right-4 bg-black rounded-2xl shadow-xl border border-white/10 p-4 md:hidden">
-            <nav className="flex flex-col space-y-4" aria-label="Mobile navigation">
-              {NAVIGATION_LINKS.map((link) => (
-                link.external ? (
-                  <a 
-                    key={link.href} 
-                    href={link.href} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="text-white/80 px-4 py-2 hover:text-white transition-colors duration-200 font-jost" 
-                    onClick={toggleMobileMenu}
-                  >
-                    {link.label}
-                  </a>
-                ) : link.href.startsWith('#') ? (
-                  <a 
-                    key={link.href} 
-                    href={link.href} 
-                    onClick={(e) => { handleScroll(e, link.href.substring(1)); toggleMobileMenu(); }}
-                    className="text-white/80 px-4 py-2 hover:text-white transition-colors duration-200 font-jost"
-                  >
-                    {link.label}
-                  </a>
-                ) : (
-                  <Link 
-                    key={link.href} 
-                    href={link.href} 
-                    className="text-white/80 px-4 py-2 hover:text-white transition-colors duration-200 font-jost" 
-                    onClick={toggleMobileMenu}
-                  >
-                    {link.label}
-                  </Link>
-                )
-              ))}
-              
-              {/* Mobile CTA Button */}
-              <Link 
-                href="/JoinUs" 
-                className="bg-[#A7C8E5] text-black px-4 py-2 rounded-lg font-medium text-center hover:bg-[#b8d4ef] transition-colors duration-200 mt-2 font-jost" 
-                onClick={toggleMobileMenu}
-              >
-                Join Us
-              </Link>
-            </nav>
-          </div>
-        )}
       </div>
+
+      {isMobileMenuOpen && (
+        <nav className="border-t border-black/10 bg-[#f4f7f8] px-6 py-4 lg:hidden" aria-label="Mobile navigation">
+          <div className="mx-auto flex max-w-[1120px] flex-col gap-1">
+            {NAVIGATION_LINKS.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                onClick={closeMenu}
+                aria-current={isCurrent(link.href) ? "page" : undefined}
+                className={`rounded-lg px-2 py-2.5 text-base ${isCurrent(link.href) ? "font-semibold text-black" : "text-[#5c6b73]"}`}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <a
+              href="https://events.ccaconnect.co"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={closeMenu}
+              className="mt-2 inline-flex justify-center rounded-full bg-[#225475] px-4 py-2.5 text-sm font-semibold text-white"
+            >
+              Join a bootcamp
+            </a>
+          </div>
+        </nav>
+      )}
     </header>
   );
 }

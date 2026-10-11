@@ -195,7 +195,7 @@ export default function PreviousEvents() {
       <div className="w-[88%] sm:w-[92%] md:w-[90%] lg:w-[86.5%] max-w-8xl mx-auto">
 
         {/* Image Container with responsive height and touch optimization */}
-        <div className="relative w-full h-[300px] xs:h-[350px] sm:h-[450px] md:h-[550px] lg:h-[650px] xl:h-[720px] overflow-hidden rounded-lg sm:rounded-xl lg:rounded-2xl shadow-lg lg:shadow-xl">
+        <div className="relative w-full h-[240px] sm:h-[300px] md:h-[360px] lg:h-[420px] overflow-hidden rounded-lg sm:rounded-xl lg:rounded-2xl shadow-lg lg:shadow-xl">
           
           {/* Current Image */}
           <div className={`absolute inset-0 transition-all duration-500 ease-in-out ${

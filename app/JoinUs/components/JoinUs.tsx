@@ -232,8 +232,8 @@ export default function JoinUs() {
   };
 
   return (
-    <section className="w-full bg-white py-24 px-6">
-      <div className="max-w-3xl mx-auto">
+    <section className="w-full bg-[#f4f7f8] px-6 py-12 font-jost">
+      <div className="mx-auto max-w-[720px]">
         
         {/* Status Message */}
         {submitStatus.type && (
@@ -249,32 +249,32 @@ export default function JoinUs() {
         {/* Progress indicator */}
         <div className="mb-8 flex justify-between items-center">
           <div className="flex gap-2">
-            <div className={`w-3 h-3 rounded-full ${step >= 1 ? 'bg-[#AFCFE4]' : 'bg-gray-200'}`} />
-            <div className={`w-3 h-3 rounded-full ${step >= 2 ? 'bg-[#AFCFE4]' : 'bg-gray-200'}`} />
-            <div className={`w-3 h-3 rounded-full ${step >= 3 ? 'bg-[#AFCFE4]' : 'bg-gray-200'}`} />
+            <div className={`h-2 w-8 rounded-full ${step >= 1 ? 'bg-[#225475]' : 'bg-black/10'}`} />
+            <div className={`h-2 w-8 rounded-full ${step >= 2 ? 'bg-[#225475]' : 'bg-black/10'}`} />
+            <div className={`h-2 w-8 rounded-full ${step >= 3 ? 'bg-[#225475]' : 'bg-black/10'}`} />
           </div>
-          <span className="text-sm text-gray-500">Step {step} of 3</span>
+          <span className="text-sm text-[#5c6b73]">Step {step} of 3</span>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6 border-2 bg-white rounded-2xl shadow-xl p-8 md:p-10">
+        <form onSubmit={handleSubmit} className="space-y-6 rounded-2xl border border-black/10 bg-white p-8 shadow-[0_8px_24px_rgba(10,10,10,0.06)] md:p-10">
           
           {/* Step 1: Interest and Date */}
           {step === 1 && (
             <div className="space-y-6">
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">Your Interest</h3>
+              <h3 className="mb-4 font-poppins text-xl font-semibold text-black">Your interest</h3>
               
               {/* Interest - Dropdown */}
               <div className="space-y-2">
-                <label className="block text-sm font-semibold text-gray-700 uppercase tracking-wide">
+                <label className="block text-sm font-semibold text-black">
                   What are you interested in? <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
-                  <FileText className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+                  <FileText className="absolute left-4 top-1/2 -translate-y-1/2 text-[#5c6b73]" size={20} />
                   <select
                     name="interest"
                     value={formData.interest}
                     onChange={handleChange}
-                    className="w-full h-14 bg-gray-50 pl-12 pr-4 rounded-xl border border-gray-200 focus:border-[#AFCFE4] focus:ring-2 focus:ring-[#AFCFE4]/20 outline-none transition-all text-gray-900 appearance-none cursor-pointer disabled:bg-gray-100 disabled:cursor-not-allowed"
+                    className="h-12 w-full appearance-none cursor-pointer rounded-xl border border-black/15 bg-white pr-10 pl-11 text-sm text-black outline-none transition-colors focus:border-[#225475] focus:ring-2 focus:ring-[#225475]/20 disabled:cursor-not-allowed disabled:bg-[#f4f7f8]"
                     required
                     disabled={isSubmitting}
                   >
@@ -284,7 +284,7 @@ export default function JoinUs() {
                   </select>
                   {/* Custom dropdown arrow */}
                   <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                    <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-[#5c6b73]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </div>
@@ -293,17 +293,17 @@ export default function JoinUs() {
 
               {/* Start Date */}
               <div className="space-y-2">
-                <label className="block text-sm font-semibold text-gray-700 uppercase tracking-wide">
+                <label className="block text-sm font-semibold text-black">
                   Intended Start Date <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
-                  <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+                  <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 text-[#5c6b73]" size={20} />
                   <input
                     type="date"
                     name="startDate"
                     value={formData.startDate}
                     onChange={handleChange}
-                    className="w-full h-14 bg-gray-50 pl-12 pr-4 rounded-xl border border-gray-200 focus:border-[#AFCFE4] focus:ring-2 focus:ring-[#AFCFE4]/20 outline-none transition-all text-gray-900 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                    className="h-12 w-full rounded-xl border border-black/15 bg-white pr-4 pl-11 text-sm text-black outline-none transition-colors placeholder:text-black/40 focus:border-[#225475] focus:ring-2 focus:ring-[#225475]/20 disabled:cursor-not-allowed disabled:bg-[#f4f7f8]"
                     required
                     disabled={isSubmitting}
                   />
@@ -315,22 +315,22 @@ export default function JoinUs() {
           {/* Step 2: Personal Information */}
           {step === 2 && (
             <div className="space-y-6">
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">Personal Information</h3>
+              <h3 className="mb-4 font-poppins text-xl font-semibold text-black">Personal information</h3>
               
               {/* Full Name */}
               <div className="space-y-2">
-                <label className="block text-sm font-semibold text-gray-700 uppercase tracking-wide">
+                <label className="block text-sm font-semibold text-black">
                   Full Name <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
-                  <User className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+                  <User className="absolute left-4 top-1/2 -translate-y-1/2 text-[#5c6b73]" size={20} />
                   <input
                     type="text"
                     name="fullName"
                     value={formData.fullName}
                     onChange={handleChange}
                     placeholder="John Doe"
-                    className="w-full h-14 bg-gray-50 pl-12 pr-4 rounded-xl border border-gray-200 focus:border-[#AFCFE4] focus:ring-2 focus:ring-[#AFCFE4]/20 outline-none transition-all text-gray-900 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                    className="h-12 w-full rounded-xl border border-black/15 bg-white pr-4 pl-11 text-sm text-black outline-none transition-colors placeholder:text-black/40 focus:border-[#225475] focus:ring-2 focus:ring-[#225475]/20 disabled:cursor-not-allowed disabled:bg-[#f4f7f8]"
                     required
                     disabled={isSubmitting}
                   />
@@ -339,18 +339,18 @@ export default function JoinUs() {
 
               {/* Email */}
               <div className="space-y-2">
-                <label className="block text-sm font-semibold text-gray-700 uppercase tracking-wide">
+                <label className="block text-sm font-semibold text-black">
                   Email Address <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
-                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-[#5c6b73]" size={20} />
                   <input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="john@example.com"
-                    className="w-full h-14 bg-gray-50 pl-12 pr-4 rounded-xl border border-gray-200 focus:border-[#AFCFE4] focus:ring-2 focus:ring-[#AFCFE4]/20 outline-none transition-all text-gray-900 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                    className="h-12 w-full rounded-xl border border-black/15 bg-white pr-4 pl-11 text-sm text-black outline-none transition-colors placeholder:text-black/40 focus:border-[#225475] focus:ring-2 focus:ring-[#225475]/20 disabled:cursor-not-allowed disabled:bg-[#f4f7f8]"
                     required
                     disabled={isSubmitting}
                   />
@@ -359,18 +359,18 @@ export default function JoinUs() {
 
               {/* Mobile */}
               <div className="space-y-2">
-                <label className="block text-sm font-semibold text-gray-700 uppercase tracking-wide">
+                <label className="block text-sm font-semibold text-black">
                   Mobile Number <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
-                  <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+                  <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-[#5c6b73]" size={20} />
                   <input
                     type="tel"
                     name="mobile"
                     value={formData.mobile}
                     onChange={handleChange}
-                    placeholder="+1 (555) 000-0000"
-                    className="w-full h-14 bg-gray-50 pl-12 pr-4 rounded-xl border border-gray-200 focus:border-[#AFCFE4] focus:ring-2 focus:ring-[#AFCFE4]/20 outline-none transition-all text-gray-900 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                    placeholder="0917 000 0000"
+                    className="h-12 w-full rounded-xl border border-black/15 bg-white pr-4 pl-11 text-sm text-black outline-none transition-colors placeholder:text-black/40 focus:border-[#225475] focus:ring-2 focus:ring-[#225475]/20 disabled:cursor-not-allowed disabled:bg-[#f4f7f8]"
                     required
                     disabled={isSubmitting}
                   />
@@ -382,12 +382,12 @@ export default function JoinUs() {
           {/* Step 3: Additional Notes */}
           {step === 3 && (
             <div className="space-y-6">
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">Additional Information</h3>
+              <h3 className="mb-4 font-poppins text-xl font-semibold text-black">Additional information</h3>
               
               {/* Note */}
               <div className="space-y-2">
-                <label className="block text-sm font-semibold text-gray-700 uppercase tracking-wide">
-                  Additional Notes <span className="text-gray-400 font-normal normal-case">(Optional)</span>
+                <label className="block text-sm font-semibold text-black">
+                  Additional notes <span className="font-normal text-[#5c6b73]">(optional)</span>
                 </label>
                 <textarea
                   name="note"
@@ -395,7 +395,7 @@ export default function JoinUs() {
                   onChange={handleChange}
                   rows={5}
                   placeholder="Tell us anything else you'd like us to know..."
-                  className="w-full bg-gray-50 px-4 py-3 rounded-xl border border-gray-200 focus:border-[#AFCFE4] focus:ring-2 focus:ring-[#AFCFE4]/20 outline-none resize-none transition-all text-gray-900 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                  className="w-full resize-none rounded-xl border border-black/15 bg-white px-4 py-3 text-sm text-black outline-none transition-colors placeholder:text-black/40 focus:border-[#225475] focus:ring-2 focus:ring-[#225475]/20 disabled:cursor-not-allowed disabled:bg-[#f4f7f8]"
                   disabled={isSubmitting}
                 />
               </div>
@@ -409,10 +409,10 @@ export default function JoinUs() {
                 type="button"
                 onClick={handlePrevious}
                 disabled={isSubmitting}
-                className="flex-1 group flex items-center justify-center bg-gray-100 hover:bg-gray-200 px-6 py-5 rounded-xl font-semibold text-gray-700 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+                className="flex h-12 flex-1 items-center justify-center gap-2 rounded-full border border-black/15 bg-white text-sm font-semibold text-black transition-colors hover:border-black/40 disabled:cursor-not-allowed disabled:opacity-50"
               >
-                <ArrowLeft size={24} className="mr-2" />
-                <span className="text-lg">Previous</span>
+                <ArrowLeft size={16} />
+                <span>Previous</span>
               </button>
             )}
             
@@ -421,40 +421,29 @@ export default function JoinUs() {
                 type="button"
                 onClick={(e) => handleNext(e)}
                 disabled={isSubmitting || !isStepValid()}
-                className={`flex-1 group flex items-center justify-between bg-[#AFCFE4] hover:bg-[#9fb8cc] px-6 py-5 rounded-xl font-semibold text-gray-800 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 ${
-                  isSubmitting || !isStepValid() ? 'opacity-50 cursor-not-allowed hover:translate-y-0' : ''
+                className={`flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-[#225475] text-sm font-semibold text-white transition-colors hover:bg-[#1b445e] ${
+                  isSubmitting || !isStepValid() ? 'cursor-not-allowed opacity-50' : ''
                 }`}
               >
-                <span className="text-lg">Next</span>
-                <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
+                <span>Next</span>
+                <ArrowRight size={16} />
               </button>
             ) : (
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="flex-1 group flex flex-col items-center justify-center bg-[#AFCFE4] hover:bg-[#9fb8cc] px-6 py-4 rounded-xl font-semibold text-gray-800 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 relative disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+                className="flex h-12 flex-1 flex-col items-center justify-center rounded-full bg-[#225475] text-sm font-semibold text-white transition-colors hover:bg-[#1b445e] disabled:cursor-not-allowed disabled:opacity-50"
               >
-                {isSubmitting ? (
-                  <>
-                    <span className="text-lg">Sending...</span>
-                    <div className="flex items-center gap-2 mt-1">
-                      <div className="w-4 h-4 border-2 border-gray-800 border-t-transparent rounded-full animate-spin" />
-                      <span className="text-xs font-thin text-gray-600">Please wait</span>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <span className="text-lg">Submit</span>
-                    <span className="text-xs font-thin text-gray-600">You will also receive free training material</span>
-                    <ArrowRight size={24} className="absolute right-6 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200" />
-                  </>
-                )}
+                {isSubmitting ? 'Sending...' : 'Submit'}
               </button>
             )}
           </div>
 
           {/* Privacy note */}
-          <p className="text-xs text-gray-500 text-center mt-4">
+          {step === 3 && (
+            <p className="text-center text-xs text-[#5c6b73]">You will also receive free training material.</p>
+          )}
+          <p className="mt-4 text-center text-xs text-[#5c6b73]">
             By submitting this form, you agree to our Terms of Service and Privacy Policy
           </p>
 

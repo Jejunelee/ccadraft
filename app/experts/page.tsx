@@ -6,7 +6,7 @@ import ExpertsTeam from "@/app/experts/components/ExpertsTeam"
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#f4f7f8]">
       <Header />
       <Section1 />
       <HowItWorks />

@@ -1,88 +1,48 @@
-"use client";
-
-import { Playfair_Display } from "next/font/google";
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  style: ["italic"],
-  weight: ["400"],
-});
+import Link from "next/link";
 
 const steps = [
   {
     title: "Share us your vision",
-    description:
-      "Tell us about your project goals, unique challenges, and specific requirements. The more we know, the better we can serve you.",
+    description: "Tell us about your project goals, unique challenges, and specific requirements. The more we know, the better we can serve you.",
   },
   {
     title: "Meet your perfect match",
-    description:
-      "We carefully pair you with a vetted Food, Beverage, or Hospitality expert whose experience aligns perfectly with your needs.",
+    description: "We carefully pair you with a vetted Food, Beverage, or Hospitality expert whose experience aligns perfectly with your needs.",
   },
   {
     title: "Collaborate & create",
-    description:
-      "Partner directly with your expert to craft a customized project plan and proposal that brings your vision to life.",
+    description: "Partner directly with your expert to craft a customized project plan and proposal that brings your vision to life.",
   },
   {
     title: "We'll handle the rest",
-    description:
-      "From screening and contracts to payments and project management—we take care of everything behind the scenes.",
+    description: "From screening and contracts to payments and project management—we take care of everything behind the scenes.",
   },
 ];
 
 export default function HowItWorks() {
   return (
-    <section className="w-full bg-white py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        {/* Header - completely unchanged */}
-        <div className="text-center mb-16 md:mb-20">
-          <h2 className="font-poppins text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-5xl mb-4 font-light text-black leading-tight">
-            How does it{" "}
-            <span className={`${playfair.className} italic text-gray-800`}>
-              work?
-            </span>
-          </h2>
-
-          <p className="font-poppins max-w-3xl mx-auto text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 leading-relaxed px-2 sm:px-4">
-            Your gateway to Philippines' top Food, Beverage, and
-            Hospitality experts—streamlined for success.
-          </p>
-        </div>
-
-        {/* Simple, human-friendly step cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+    <section className="bg-[#f4f7f8] font-jost">
+      <div className="mx-auto w-full max-w-[1120px] px-6 py-16 sm:py-20">
+        <p className="text-[12px] font-semibold tracking-[0.14em] text-[#225475] uppercase">How it works</p>
+        <h2 className="mt-3 font-poppins text-3xl leading-tight font-semibold tracking-tight text-black sm:text-4xl">
+          How does it work?
+        </h2>
+        <p className="mt-4 max-w-[52ch] text-base leading-relaxed text-[#5c6b73] sm:text-lg">
+          Your gateway to the Philippines&apos; top Food, Beverage, and Hospitality experts—streamlined for success.
+        </p>
+        <div className="mt-8 grid gap-4 md:grid-cols-2">
           {steps.map((step, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
-            >
-              {/* Step number - soft and friendly */}
-              <div className="mb-5">
-                <span className="text-5xl font-light text-[#AFCFE4]">
-                  {(index + 1).toString().padStart(2, "0")}
-                </span>
-              </div>
-
-              {/* Title */}
-              <h3 className="font-poppins text-xl sm:text-2xl font-semibold text-black mb-4 leading-tight">
-                {step.title}
-              </h3>
-
-              {/* Description */}
-              <p className="font-poppins text-gray-600 leading-relaxed text-base">
-                {step.description}
-              </p>
-            </div>
+            <article key={step.title} className="rounded-2xl border border-black/10 bg-white p-6">
+              <span className="font-poppins text-sm font-semibold text-[#225475]">{String(index + 1).padStart(2, "0")}</span>
+              <h3 className="mt-2 font-poppins text-xl font-semibold text-black">{step.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-[#5c6b73]">{step.description}</p>
+            </article>
           ))}
         </div>
-
-        {/* Gentle closing note */}
-        <div className="text-center mt-16 pt-8">
-          <p className="font-poppins text-gray-500 text-sm italic">
-            Simple, transparent, and human-first.
-          </p>
-        </div>
+        <p className="mt-6 text-sm text-[#5c6b73]">Simple, transparent, and human-first.</p>
+        <Link href="/JoinUs" className="mt-5 inline-flex rounded-full bg-[#225475] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#1b445e]">
+          Start a project
+        </Link>
       </div>
     </section>
   );

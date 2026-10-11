@@ -1,22 +1,26 @@
 import Hero from "@/app/components/landing/Hero";
-import Stats from "@/app/components/landing/Stats";
 import Section1 from "@/app/components/landing/Section1";
 import Offers from "@/app/components/landing/Offers";
-import PreviousEvents from "@/app/components/landing/PreviousEvents";
-import Events from "@/app/components/landing/Events";
+import MediaReel from "@/app/components/landing/MediaReel";
+import Stats from "@/app/components/landing/Stats";
+import Practice from "@/app/components/landing/Practice";
+import ExpertsPreview from "@/app/components/landing/ExpertsPreview";
+import Partners from "@/app/components/landing/Partners";
+import CloseCta from "@/app/components/landing/CloseCta";
 import Footer from "@/app/components/landing/Footer";
-import Announcement from "@/app/components/landing/Announcement"; // Import the Announcement component
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-zinc-50">
-      <Announcement />
+    <div className="min-h-screen bg-[#f4f7f8] text-black">
       <Hero />
-      <Stats />
       <Section1 />
       <Offers />
-      <PreviousEvents />
-      <Events />
+      <MediaReel />
+      <Stats />
+      <Practice />
+      <ExpertsPreview />
+      <Partners />
+      <CloseCta />
       <Footer />
     </div>
   );

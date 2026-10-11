@@ -6,14 +6,14 @@ import { Facebook, Instagram } from "lucide-react";
 
 export default function ExpertsPage() {
   return (
-    <main className="w-full">
+    <div className="w-full">
       {/* Bea Trinidad - Left aligned (image left, text right) */}
-      <section className="w-full bg-white py-20 md:py-24 lg:py-40 px-8 sm:px-10">
-        <div className="max-w-8xl mx-auto grid lg:grid-cols-2 gap-12 md:gap-20 lg:gap-24 items-center">
+      <section className="w-full bg-[#f4f7f8] px-6 py-16 font-jost">
+        <div className="mx-auto grid w-full max-w-[1120px] items-center gap-10 lg:grid-cols-2 lg:gap-16">
           {/* Left Column - Image */}
           <div className="relative flex justify-center lg:justify-end order-1">
             <div className="drop-shadow-xl relative w-full max-w-[640px] sm:max-w-[700px] rounded-2xl overflow-hidden">
-              <div className="relative w-full aspect-[4/5] sm:h-[840px]">
+              <div className="relative aspect-[4/5] w-full max-h-[520px]">
                 <Image
                   src="/experts/team/trinidad.png"
                   alt="Bea Trinidad"
@@ -52,7 +52,7 @@ export default function ExpertsPage() {
 
           {/* Right Column - Content */}
           <div className="max-w-2xl mx-auto lg:mx-0 order-2">
-            <h2 className="text-5xl sm:text-6xl font-semibold text-black mb-4 text-center lg:text-left">
+            <h2 className="font-poppins text-4xl sm:text-5xl font-semibold tracking-tight text-black mb-4 text-center lg:text-left">
               Bea Trinidad
             </h2>
 
@@ -60,7 +60,7 @@ export default function ExpertsPage() {
               PR & MARKETING MANAGER AT CCA MANILA
             </p>
 
-            <div className="w-32 sm:w-40 h-1.5 bg-[#9bb7c9] mb-8 sm:mb-10 mx-auto lg:mx-0"></div>
+            <div className="mb-6 h-1 w-16 bg-[#225475]"></div>
 
             <div className="space-y-6 sm:space-y-8 text-lg sm:text-xl text-black/80 leading-relaxed">
               <p>
@@ -87,15 +87,15 @@ export default function ExpertsPage() {
       </section>
 
       {/* Works Fine Studios - Right aligned (image right, text left) */}
-      <section className="w-full bg-white py-20 md:py-24 lg:py-40 px-8 sm:px-10">
-        <div className="max-w-8xl w-[80%] mx-auto grid lg:grid-cols-2 gap-12 md:gap-20 lg:gap-24 items-center">
+      <section className="w-full bg-[#f4f7f8] px-6 py-16 font-jost">
+        <div className="mx-auto grid w-full max-w-[1120px] items-center gap-10 lg:grid-cols-2 lg:gap-16">
           {/* Left Column - Content (appears first on desktop) */}
           <div className="max-w-3xl mx-auto lg:mx-0 order-2 lg:order-1">
-            <h2 className="text-5xl sm:text-6xl font-semibold text-black mb-4 text-center lg:text-left">
+            <h2 className="font-poppins text-4xl sm:text-5xl font-semibold tracking-tight text-black mb-4 text-center lg:text-left">
               Works Fine Studios
             </h2>
 
-            <div className="w-32 sm:w-40 h-1.5 bg-[#9bb7c9] mb-8 sm:mb-10 mx-auto lg:mx-0"></div>
+            <div className="mb-6 h-1 w-16 bg-[#225475]"></div>
 
             <div className="space-y-6 sm:space-y-8 text-lg sm:text-xl text-black/80 leading-relaxed">
               <p>
@@ -114,7 +114,7 @@ export default function ExpertsPage() {
           {/* Right Column - Image (appears second on desktop) */}
           <div className="relative flex justify-center lg:justify-start order-1 lg:order-2">
             <div className="drop-shadow-xl relative w-full max-w-[640px] sm:max-w-[700px] rounded-2xl overflow-hidden">
-              <div className="relative w-full aspect-[4/5] sm:h-[840px]">
+              <div className="relative aspect-[4/5] w-full max-h-[520px]">
                 <Image
                   src="/experts/team/worksfine-tt.png"
                   alt="Works Fine Studios"
@@ -151,6 +151,6 @@ export default function ExpertsPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
