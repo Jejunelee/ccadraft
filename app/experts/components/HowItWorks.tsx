@@ -22,12 +22,12 @@ const steps = [
 export default function HowItWorks() {
   return (
     <section className="bg-[#f4f7f8] font-jost">
-      <div className="mx-auto w-full max-w-[1120px] px-6 py-16 sm:py-20">
-        <p className="text-[12px] font-semibold tracking-[0.14em] text-[#225475] uppercase">How it works</p>
-        <h2 className="mt-3 font-poppins text-3xl leading-tight font-semibold tracking-tight text-black sm:text-4xl">
-          How does it work?
+      <div className="mx-auto w-full max-w-[1280px] px-5 py-12 lg:px-6 lg:py-20">
+        <p className="kicker text-[#225475] uppercase">How it works</p>
+        <h2 className="mt-3 font-poppins text-[1.75rem] leading-tight font-semibold tracking-tight text-black lg:text-4xl">
+          How does it <em className="phrase">work</em>?
         </h2>
-        <p className="mt-4 max-w-[52ch] text-base leading-relaxed text-[#5c6b73] sm:text-lg">
+        <p className="mt-4 max-w-[52ch] descriptor text-[#5c6b73]">
           Your gateway to the Philippines&apos; top Food, Beverage, and Hospitality experts—streamlined for success.
         </p>
         <div className="mt-8 grid gap-4 md:grid-cols-2">
@@ -35,12 +35,12 @@ export default function HowItWorks() {
             <article key={step.title} className="rounded-2xl border border-black/10 bg-white p-6">
               <span className="font-poppins text-sm font-semibold text-[#225475]">{String(index + 1).padStart(2, "0")}</span>
               <h3 className="mt-2 font-poppins text-xl font-semibold text-black">{step.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-[#5c6b73]">{step.description}</p>
+              <p className="mt-3 text-lg leading-relaxed text-[#5c6b73]">{step.description}</p>
             </article>
           ))}
         </div>
         <p className="mt-6 text-sm text-[#5c6b73]">Simple, transparent, and human-first.</p>
-        <Link href="/JoinUs" className="mt-5 inline-flex rounded-full bg-[#225475] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#1b445e]">
+        <Link href="/JoinUs" className="mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#225475] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#1b445e] lg:w-auto lg:min-h-0 lg:justify-start">
           Start a project
         </Link>
       </div>

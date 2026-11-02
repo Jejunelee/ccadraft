@@ -13,22 +13,19 @@ type NavigationLink = {
 };
 
 const NAVIGATION_LINKS: NavigationLink[] = [
-  { href: "/#bootcamps", label: "Bootcamps & Events" },
+  { href: "/#programs", label: "Bootcamps & Events" },
   { href: "/#work", label: "How We Work" },
   { href: "/#practice", label: "Consultancy" },
   { href: "/training", label: "Training" },
   { href: "/experts", label: "Experts" },
   { href: "/#partners", label: "Partners" },
-  { href: "/about", label: "About CCA" },
+  { href: "/about", label: "About Us" },
 ];
 
 export default function Header() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  if (pathname?.startsWith("/dashboard")) {
-    return null;
-  }
+  const [scrolled, setScrolled] = useState(false);
 
   const closeMenu = () => setIsMobileMenuOpen(false);
 
@@ -37,12 +34,24 @@ export default function Header() {
   }, [pathname]);
 
   useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
     if (!isMobileMenuOpen) return;
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") setIsMobileMenuOpen(false);
     };
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKey);
+    };
   }, [isMobileMenuOpen]);
 
   const isCurrent = (href: string) => {
@@ -50,14 +59,34 @@ export default function Header() {
     return pathname === href || pathname.startsWith(`${href}/`);
   };
 
+  if (pathname?.startsWith("/dashboard")) {
+    return null;
+  }
+
+  const island = scrolled && !isMobileMenuOpen;
+
   return (
-    <header className="sticky top-0 z-50 border-b border-black/10 bg-[#f4f7f8]/90 font-jost backdrop-blur-md">
-      <div className="mx-auto flex h-[66px] w-full max-w-[1120px] items-center gap-6 px-6">
-        <Link href="/" className="mr-auto flex items-center" aria-label="CCA Connect">
-          <Image src="/logo.png" alt="CCA Connect" width={614} height={361} className="h-9 w-auto" priority />
+    <header
+      className={`sticky top-0 z-50 h-[66px] font-jost transition-colors duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        island ? "bg-transparent" : "border-b border-black/10 bg-[#f4f7f8]/90 backdrop-blur-md"
+      }`}
+    >
+      <div
+        className={`nav-shell mx-auto flex w-full items-center gap-3 px-4 lg:gap-4 lg:px-5 xl:px-6 ${
+          island
+            ? "h-[64px] max-w-[min(1280px,calc(100%-2rem))] translate-y-3 rounded-full border border-white/10 bg-[#0a0a0a] text-white shadow-[0_16px_40px_rgba(0,0,0,0.28)]"
+            : "h-[66px] max-w-[1280px] translate-y-0"
+        }`}
+      >
+        <Link
+          href="/"
+          className={`mr-auto flex shrink-0 items-center ${island ? "rounded-md bg-white px-2 py-1" : ""}`}
+          aria-label="CCA Connect"
+        >
+          <Image src="/logo.png" alt="CCA Connect" width={614} height={361} className="h-8 w-auto" priority />
         </Link>
 
-        <nav className="hidden items-center gap-4 xl:gap-5 lg:flex" aria-label="Main navigation">
+        <nav className="hidden shrink-0 items-center gap-3 xl:gap-4 lg:flex" aria-label="Main navigation">
           {NAVIGATION_LINKS.map((link) =>
             link.external ? (
               <a
@@ -65,7 +94,9 @@ export default function Header() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-medium text-[#5c6b73] transition-colors hover:text-black"
+                className={`text-sm font-normal whitespace-nowrap transition-colors ${
+                  island ? "text-white/75 hover:text-white" : "text-[#5c6b73] hover:text-black"
+                }`}
               >
                 {link.label}
               </a>
@@ -74,8 +105,14 @@ export default function Header() {
                 key={link.label}
                 href={link.href}
                 aria-current={isCurrent(link.href) ? "page" : undefined}
-                className={`text-[13px] font-medium transition-colors hover:text-black xl:text-sm ${
-                  isCurrent(link.href) ? "text-black" : "text-[#5c6b73]"
+                className={`text-sm font-normal whitespace-nowrap transition-colors ${
+                  island
+                    ? isCurrent(link.href)
+                      ? "text-white"
+                      : "text-white/75 hover:text-white"
+                    : isCurrent(link.href)
+                      ? "text-black"
+                      : "text-[#5c6b73] hover:text-black"
                 }`}
               >
                 {link.label}
@@ -84,19 +121,20 @@ export default function Header() {
           )}
         </nav>
 
-        <a
-          href="https://events.ccaconnect.co"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden rounded-full bg-[#225475] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#1b445e] lg:inline-flex"
+        <Link
+          href="/JoinUs"
+          aria-current={pathname === "/JoinUs" ? "page" : undefined}
+          className={`hidden shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition-colors lg:inline-flex ${
+            island ? "bg-[#AFCFE4] text-black hover:bg-white" : "bg-[#225475] text-white hover:bg-[#1b445e]"
+          }`}
         >
-          Join a bootcamp
-        </a>
+          Join Us
+        </Link>
 
         <button
           type="button"
           onClick={() => setIsMobileMenuOpen((open) => !open)}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full text-black lg:hidden"
+          className={`inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full lg:hidden ${island ? "text-white" : "text-black"}`}
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={isMobileMenuOpen}
         >
@@ -105,28 +143,31 @@ export default function Header() {
       </div>
 
       {isMobileMenuOpen && (
-        <nav className="border-t border-black/10 bg-[#f4f7f8] px-6 py-4 lg:hidden" aria-label="Mobile navigation">
-          <div className="mx-auto flex max-w-[1120px] flex-col gap-1">
+        <nav
+          className="fixed inset-x-0 top-[66px] bottom-0 z-40 overflow-y-auto border-t border-black/10 bg-[#f4f7f8] px-5 pt-2 pb-[max(1.25rem,env(safe-area-inset-bottom))] lg:hidden"
+          aria-label="Mobile navigation"
+        >
+          <div className="mx-auto flex min-h-full max-w-[1280px] flex-col">
             {NAVIGATION_LINKS.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
                 onClick={closeMenu}
                 aria-current={isCurrent(link.href) ? "page" : undefined}
-                className={`rounded-lg px-2 py-2.5 text-base ${isCurrent(link.href) ? "font-semibold text-black" : "text-[#5c6b73]"}`}
+                className={`border-b border-black/10 py-4 text-lg ${
+                  isCurrent(link.href) ? "font-semibold text-[#225475]" : "font-medium text-black"
+                }`}
               >
                 {link.label}
               </Link>
             ))}
-            <a
-              href="https://events.ccaconnect.co"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/JoinUs"
               onClick={closeMenu}
-              className="mt-2 inline-flex justify-center rounded-full bg-[#225475] px-4 py-2.5 text-sm font-semibold text-white"
+              className="mt-8 inline-flex min-h-12 items-center justify-center rounded-full bg-[#225475] px-4 text-sm font-semibold text-white"
             >
-              Join a bootcamp
-            </a>
+              Join Us
+            </Link>
           </div>
         </nav>
       )}

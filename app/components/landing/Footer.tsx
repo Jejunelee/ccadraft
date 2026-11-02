@@ -20,7 +20,7 @@ const columns = [
       { label: "Brand Partnerships", href: "/#partners" },
       { label: "Sponsorships", href: "/JoinUs" },
       { label: "Become an expert", href: "/JoinUs" },
-      { label: "About CCA Manila", href: "/about" },
+      { label: "About Us", href: "/about" },
     ],
   },
 ];
@@ -55,7 +55,7 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-black/10 bg-[#f4f7f8] font-jost text-black">
-      <div className="mx-auto grid w-full max-w-[1120px] gap-10 px-6 py-12 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto grid w-full max-w-[1280px] gap-8 px-5 py-10 lg:grid-cols-4 lg:gap-10 lg:px-6 lg:py-12">
         <div>
           <Image src="/logo.png" alt="CCA Connect" width={120} height={80} className="h-12 w-auto" />
           <p className="mt-4 max-w-[28ch] text-sm leading-relaxed text-[#5c6b73]">
@@ -76,7 +76,7 @@ export default function Footer() {
                 disabled={status === "loading"}
                 className="w-full bg-transparent text-sm outline-none placeholder:text-black/40"
               />
-              <button type="submit" className="px-2 text-lg" aria-label="Subscribe" disabled={status === "loading"}>
+              <button type="submit" className="inline-flex min-h-11 min-w-11 items-center justify-center text-lg lg:min-h-0 lg:min-w-0 lg:px-2" aria-label="Subscribe" disabled={status === "loading"}>
                 {status === "loading" ? "…" : "→"}
               </button>
             </div>
@@ -87,18 +87,19 @@ export default function Footer() {
           </form>
         </div>
 
+        <div className="grid grid-cols-2 gap-x-6 gap-y-8 lg:contents">
         {columns.map((column) => (
           <div key={column.title}>
-            <h2 className="text-xs font-semibold tracking-[0.12em] text-[#5c6b73] uppercase">{column.title}</h2>
-            <ul className="mt-3 space-y-2">
+            <h2 className="text-sm font-semibold tracking-[0.12em] text-[#5c6b73] uppercase">{column.title}</h2>
+            <ul className="mt-3 space-y-1 lg:space-y-2">
               {column.links.map((link) => (
                 <li key={link.label}>
                   {link.external ? (
-                    <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-sm hover:text-[#225475]">
+                    <a href={link.href} target="_blank" rel="noopener noreferrer" className="inline-flex py-1.5 text-sm hover:text-[#225475] lg:py-0">
                       {link.label}
                     </a>
                   ) : (
-                    <Link href={link.href} className="text-sm hover:text-[#225475]">
+                    <Link href={link.href} className="inline-flex py-1.5 text-sm hover:text-[#225475] lg:py-0">
                       {link.label}
                     </Link>
                   )}
@@ -108,24 +109,25 @@ export default function Footer() {
           </div>
         ))}
 
-        <div>
-          <h2 className="text-xs font-semibold tracking-[0.12em] text-[#5c6b73] uppercase">Get in touch</h2>
-          <a href="mailto:piagtrinidad@cca-manila.edu.ph" className="mt-3 block text-sm font-semibold hover:text-[#225475]">
+        <div className="col-span-2 lg:col-span-1">
+          <h2 className="text-sm font-semibold tracking-[0.12em] text-[#5c6b73] uppercase">Get in touch</h2>
+          <a href="mailto:piagtrinidad@cca-manila.edu.ph" className="mt-3 block text-sm font-semibold break-all hover:text-[#225475] lg:break-normal">
             piagtrinidad@cca-manila.edu.ph
           </a>
-          <p className="mt-2 text-sm leading-relaxed text-[#5c6b73]">
+          <p className="mt-2 text-lg leading-relaxed text-[#5c6b73]">
             CCA Manila Campus
             <br />
             Bonifacio Global City, Taguig
           </p>
-          <Link href="/JoinUs" className="mt-3 inline-block text-sm hover:text-[#225475]">
+          <Link href="/JoinUs" className="mt-3 inline-flex py-1.5 text-sm hover:text-[#225475] lg:py-0">
             Schedule a call
           </Link>
+        </div>
         </div>
       </div>
 
       <div className="border-t border-black/10">
-        <div className="mx-auto flex w-full max-w-[1120px] flex-wrap items-center justify-between gap-2 px-6 py-4 text-xs text-[#5c6b73]">
+        <div className="mx-auto flex w-full max-w-[1280px] flex-wrap items-center justify-between gap-2 px-6 py-4 text-xs text-[#5c6b73]">
           <span>© {currentYear} CCA Connect · Center for Food Entrepreneurship</span>
           <span>Powered by CCA Manila</span>
         </div>

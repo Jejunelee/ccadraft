@@ -26,12 +26,12 @@ const cards = [
 export default function Partners() {
   return (
     <section id="partners" className="bg-[#0a0a0a] font-jost text-white">
-      <div className="mx-auto w-full max-w-[1120px] px-6 py-16 sm:py-20">
-        <p className="text-[12px] font-semibold tracking-[0.14em] text-[#AFCFE4] uppercase">For brand partners</p>
-        <h2 className="mt-3 max-w-[16ch] font-poppins text-3xl leading-tight font-semibold tracking-tight sm:text-4xl">
-          Connect your brand to the food-business community.
+      <div className="mx-auto w-full max-w-[1280px] px-5 py-12 lg:px-6 lg:py-20">
+        <p className="kicker text-[#AFCFE4] uppercase">For brand partners</p>
+        <h2 className="mt-3 max-w-[16ch] font-poppins text-[1.75rem] leading-tight font-semibold tracking-tight lg:text-4xl">
+          Connect your brand to the food-business <em className="phrase">community.</em>
         </h2>
-        <p className="mt-4 max-w-[54ch] text-base leading-relaxed text-white/65 sm:text-lg">
+        <p className="mt-4 max-w-[54ch] descriptor text-white/65">
           The owners, chefs, and operators who decide what to buy are already in our room. We help food and beverage brands reach, educate, and build loyalty with them — through programs backed by CCA Manila.
         </p>
 

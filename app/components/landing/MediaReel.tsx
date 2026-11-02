@@ -1,21 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import { useRef, useState } from "react";
 
 const videos = [
   { src: "/landing/videos/hapag.mp4", alt: "Chef Nav & Chev Thirdy — Hapag" },
   { src: "/landing/videos/ryan.mp4", alt: "Ryan K. Cruz — Ramen Yushoken" },
   { src: "/landing/videos/isabel.mp4", alt: "Isabel Lozano — Decorum by MIL" },
-];
-
-const photos = [
-  { src: "/landing/pevents/1.jpg", caption: "CCA Connect Bootcamp · Brittany Hotel" },
-  { src: "/landing/pevents/2.jpeg", caption: "Family Succession · Brittany Hotel" },
-  { src: "/landing/pevents/9.jpg", caption: "Summit · Brittany Hotel" },
-  { src: "/landing/pevents/10.jpg", caption: "Tikim · Brittany Hotel" },
-  { src: "/landing/pevents/6.jpg", caption: "CCA Connect Bootcamp" },
-  { src: "/landing/pevents/12.jpg", caption: "Tikim" },
 ];
 
 export default function MediaReel() {
@@ -49,25 +39,25 @@ export default function MediaReel() {
 
   return (
     <section id="in-the-room" className="bg-white font-jost">
-      <div className="mx-auto w-full max-w-[1120px] px-6 py-16 sm:py-20">
-        <p className="text-[12px] font-semibold tracking-[0.14em] text-[#225475] uppercase">In the room</p>
-        <h2 className="mt-3 max-w-[16ch] font-poppins text-3xl leading-tight font-semibold tracking-tight text-black sm:text-4xl">
-          The work, the rooms, the people.
+      <div className="mx-auto w-full max-w-[1280px] px-5 py-12 lg:px-6 lg:py-20">
+        <p className="kicker text-[#225475]">In the room</p>
+        <h2 className="mt-3 max-w-[16ch] font-poppins text-[1.75rem] leading-tight font-semibold tracking-tight text-black lg:text-4xl">
+          The work, the rooms, the <em className="phrase">people.</em>
         </h2>
-        <p className="mt-4 max-w-[54ch] text-base leading-relaxed text-[#5c6b73] sm:text-lg">
-          Bootcamps, summits, and conversations with the operators already building food businesses.
+        <p className="descriptor mt-4 max-w-[54ch] text-[#5c6b73]">
+          From CCA Connect Bootcamp: Experience is the New Menu — Hapag, Ryan K. Cruz, and Isabel Lozano.
         </p>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <div className="mobile-rail mt-8 -mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-1 lg:mx-0 lg:grid lg:grid-cols-3 lg:gap-4 lg:overflow-visible lg:px-0 lg:pb-0">
           {videos.map((video, index) => (
-            <figure key={video.src} className="overflow-hidden rounded-2xl bg-[#0a0a0a]">
+            <figure key={video.src} className="w-[78%] max-w-[320px] shrink-0 snap-center overflow-hidden rounded-2xl bg-[#0a0a0a] lg:w-auto lg:max-w-none lg:shrink">
               <button type="button" onClick={() => toggle(index)} className="relative block aspect-[3/4] w-full" aria-label={playing === index ? "Pause video" : "Play video"}>
                 <video
                   ref={(element) => {
                     refs.current[index] = element;
                   }}
                   src={video.src}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover object-[center_18%]"
                   playsInline
                   preload="metadata"
                   controls={playing === index}
@@ -81,39 +71,9 @@ export default function MediaReel() {
                   </span>
                 )}
               </button>
-              <figcaption className="px-4 py-3 text-sm text-white/80">{video.alt}</figcaption>
+              <figcaption className="px-4 py-3 text-base text-white/80">{video.alt}</figcaption>
             </figure>
           ))}
-        </div>
-
-        <div className="mt-10 grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-            {photos.map((photo) => (
-              <figure key={photo.src} className="group relative aspect-[4/5] overflow-hidden rounded-2xl">
-                <Image src={photo.src} alt={photo.caption} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 1024px) 45vw, 18vw" />
-                <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-3 pt-10 text-xs font-medium text-white">
-                  {photo.caption}
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-
-          <a
-            href="https://www.events.ccaconnect.co/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group overflow-hidden rounded-2xl border border-black/10 bg-[#E7F5F5]"
-          >
-            <div className="relative aspect-[4/3] w-full">
-              <Image src="/landing/events/1.png" alt="Hospitality Summit" fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 1024px) 100vw, 40vw" />
-            </div>
-            <div className="p-5">
-              <p className="text-[12px] font-semibold tracking-[0.14em] text-[#225475] uppercase">Don&apos;t miss the next one</p>
-              <h3 className="mt-2 font-poppins text-2xl font-semibold text-black">Hospitality Summit</h3>
-              <p className="mt-1 text-sm text-[#5c6b73]">June 4, 2026</p>
-              <p className="mt-4 text-sm font-semibold text-[#225475]">Learn more →</p>
-            </div>
-          </a>
         </div>
       </div>
     </section>

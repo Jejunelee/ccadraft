@@ -9,23 +9,23 @@ export default function ExpertsPage() {
     <div className="w-full">
       {/* Bea Trinidad - Left aligned (image left, text right) */}
       <section className="w-full bg-[#f4f7f8] px-6 py-16 font-jost">
-        <div className="mx-auto grid w-full max-w-[1120px] items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div className="mx-auto grid w-full max-w-[1280px] items-center gap-10 lg:grid-cols-2 lg:gap-16">
           {/* Left Column - Image */}
           <div className="relative flex justify-center lg:justify-end order-1">
-            <div className="drop-shadow-xl relative w-full max-w-[640px] sm:max-w-[700px] rounded-2xl overflow-hidden">
-              <div className="relative aspect-[4/5] w-full max-h-[520px]">
+            <div className="relative w-full max-w-[420px] overflow-hidden rounded-2xl shadow-[0_16px_40px_rgba(10,10,10,0.12)]">
+              <div className="relative aspect-[4/5] w-full bg-[#E7F5F5]">
                 <Image
                   src="/experts/team/trinidad.png"
                   alt="Bea Trinidad"
                   fill
-                  className="object-cover object-center"
+                  className="object-contain object-center"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 700px"
                   priority
                 />
               </div>
 
               {/* Social Icons */}
-              <div className="absolute top-5 right-5 sm:top-6 sm:right-6 flex gap-4">
+              <div className="absolute top-4 right-4 z-10 flex gap-2">
                 <a 
                   href="https://web.facebook.com/anabeatricetrinidad" 
                   className="w-12 h-12 sm:w-14 sm:h-14 bg-black rounded-full flex items-center justify-center hover:bg-opacity-80 transition-colors"
@@ -52,7 +52,7 @@ export default function ExpertsPage() {
 
           {/* Right Column - Content */}
           <div className="max-w-2xl mx-auto lg:mx-0 order-2">
-            <h2 className="font-poppins text-4xl sm:text-5xl font-semibold tracking-tight text-black mb-4 text-center lg:text-left">
+            <h2 className="font-poppins text-3xl font-semibold tracking-tight text-black mb-4 text-center lg:text-left lg:text-5xl">
               Bea Trinidad
             </h2>
 
@@ -88,10 +88,10 @@ export default function ExpertsPage() {
 
       {/* Works Fine Studios - Right aligned (image right, text left) */}
       <section className="w-full bg-[#f4f7f8] px-6 py-16 font-jost">
-        <div className="mx-auto grid w-full max-w-[1120px] items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div className="mx-auto grid w-full max-w-[1280px] items-center gap-10 lg:grid-cols-2 lg:gap-16">
           {/* Left Column - Content (appears first on desktop) */}
           <div className="max-w-3xl mx-auto lg:mx-0 order-2 lg:order-1">
-            <h2 className="font-poppins text-4xl sm:text-5xl font-semibold tracking-tight text-black mb-4 text-center lg:text-left">
+            <h2 className="font-poppins text-3xl font-semibold tracking-tight text-black mb-4 text-center lg:text-left lg:text-5xl">
               Works Fine Studios
             </h2>
 
@@ -113,19 +113,19 @@ export default function ExpertsPage() {
 
           {/* Right Column - Image (appears second on desktop) */}
           <div className="relative flex justify-center lg:justify-start order-1 lg:order-2">
-            <div className="drop-shadow-xl relative w-full max-w-[640px] sm:max-w-[700px] rounded-2xl overflow-hidden">
-              <div className="relative aspect-[4/5] w-full max-h-[520px]">
+            <div className="relative w-full max-w-[420px] overflow-hidden rounded-2xl shadow-[0_16px_40px_rgba(10,10,10,0.12)]">
+              <div className="relative aspect-[4/5] w-full bg-[#E7F5F5]">
                 <Image
                   src="/experts/team/worksfine-tt.png"
                   alt="Works Fine Studios"
                   fill
-                  className="object-cover object-center"
+                  className="object-contain object-center"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 700px"
                 />
               </div>
 
               {/* Social Icons */}
-              <div className="absolute top-5 right-5 sm:top-6 sm:right-6 flex gap-4">
+              <div className="absolute top-4 right-4 z-10 flex gap-2">
                 <a 
                   href="#" 
                   className="w-12 h-12 sm:w-14 sm:h-14 bg-black rounded-full flex items-center justify-center hover:bg-opacity-80 transition-colors"

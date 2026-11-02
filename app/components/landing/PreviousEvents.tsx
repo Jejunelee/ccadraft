@@ -209,7 +209,7 @@ export default function PreviousEvents() {
               src={images[index].src}
               alt="Previous Event"
               fill
-              className="object-cover"
+              className="object-cover object-[center_18%]"
               priority
               sizes="(max-width: 480px) 100vw, (max-width: 640px) 95vw, (max-width: 768px) 90vw, (max-width: 1024px) 85vw, 87vw"
             />
@@ -226,7 +226,7 @@ export default function PreviousEvents() {
                 src={images[nextImageIndex].src}
                 alt="Next Event"
                 fill
-                className="object-cover"
+                className="object-cover object-[center_18%]"
                 priority
                 sizes="(max-width: 480px) 100vw, (max-width: 640px) 95vw, (max-width: 768px) 90vw, (max-width: 1024px) 85vw, 87vw"
               />

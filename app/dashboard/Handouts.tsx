@@ -121,7 +121,7 @@ export default function Handouts({
             <div key={handout.id} className="overflow-hidden rounded-2xl border border-black/10 bg-white">
               <div className="relative h-32 bg-[#AFCFE4]/30">
                 {handout.thumbnail_url ? (
-                  <img src={handout.thumbnail_url} alt="" className="h-full w-full object-cover" />
+                  <img src={handout.thumbnail_url} alt="" className="h-full w-full object-cover object-[center_18%]" />
                 ) : (
                   <div className="flex h-full items-center justify-center text-[#225475]">
                     <FileIcon fileType={handout.file_type} />
@@ -137,7 +137,7 @@ export default function Handouts({
 
               <div className="p-5">
                 <h3 className="line-clamp-1 font-poppins text-lg font-semibold">{handout.title}</h3>
-                <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-[#5c6b73]">{handout.description}</p>
+                <p className="mt-2 line-clamp-2 text-lg leading-relaxed text-[#5c6b73]">{handout.description}</p>
 
                 <div className="mt-3 flex flex-wrap gap-2">
                   {handout.category ? (

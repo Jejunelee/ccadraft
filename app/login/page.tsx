@@ -38,11 +38,11 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-[calc(100dvh-66px)] items-center justify-center bg-[#f4f7f8] px-6 py-12 font-jost">
+    <div className="flex min-h-[calc(100dvh-66px)] items-center justify-center bg-[#f4f7f8] px-5 py-8 font-jost lg:px-6 lg:py-12">
       <div className="w-full max-w-[420px]">
-        <p className="text-[12px] font-semibold tracking-[0.14em] text-[#225475] uppercase">Resource hub</p>
+        <p className="kicker text-[#225475] uppercase">Resource hub</p>
         <h1 className="mt-3 font-poppins text-4xl font-semibold tracking-tight text-black">Sign in</h1>
-        <p className="mt-3 text-base leading-relaxed text-[#5c6b73]">
+        <p className="mt-3 descriptor text-[#5c6b73]">
           Sign in to access your resources and materials.
         </p>
 

@@ -42,7 +42,7 @@ export default function Events() {
                     src={event.image}
                     alt={event.title}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105 md:group-hover:scale-110"
+                    className="object-cover object-[center_30%]"
                     sizes="(max-width: 480px) 100vw, (max-width: 640px) 100vw, (max-width: 768px) 90vw, (max-width: 1024px) 45vw, 50vw"
                     priority={i === 0}
                     loading={i === 0 ? "eager" : "lazy"}

@@ -5,6 +5,7 @@ export default function Header() {
     <PageIntro
       eyebrow="Join us"
       title="Join our community"
+      emphasis="community"
       text="Tell us what you need. We'll match you with a bootcamp, a consultancy, or a place in the expert network."
     />
   );

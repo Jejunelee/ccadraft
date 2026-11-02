@@ -15,7 +15,7 @@ export default function Announcement() {
   if (!visible) return null;
 
   return (
-    <div className="relative flex h-9 items-center bg-[#225475] font-jost text-sm text-white" role="region" aria-label="Announcement">
+    <div className="relative flex h-11 items-center bg-[#AFCFE4] font-jost text-base text-[#0a0a0a]" role="region" aria-label="Announcement">
       <div className="min-w-0 flex-1 overflow-hidden pr-8">
         <div className="ticker-track flex w-max">
           {[0, 1].map((copy) => (
@@ -29,12 +29,12 @@ export default function Announcement() {
                       href={linkUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="ml-3 font-semibold text-[#AFCFE4] underline-offset-2 hover:underline"
+                      className="ml-3 font-semibold text-[#225475] underline-offset-2 hover:underline"
                       tabIndex={primary ? undefined : -1}
                     >
                       {linkText}
                     </a>
-                    <span className="ml-4 h-1 w-1 rounded-full bg-white/50" aria-hidden="true" />
+                    <span className="ml-4 h-1 w-1 rounded-full bg-[#225475]/50" aria-hidden="true" />
                   </p>
                 );
               })}
@@ -45,7 +45,7 @@ export default function Announcement() {
       <button
         type="button"
         onClick={() => setVisible(false)}
-        className="absolute top-0 right-0 flex h-9 w-10 items-center justify-center bg-[#225475] text-white hover:text-[#AFCFE4] focus-visible:outline-white"
+        className="absolute top-0 right-0 flex h-11 w-11 items-center justify-center bg-[#AFCFE4] text-[#0a0a0a] hover:text-[#225475]"
         aria-label="Dismiss announcement"
       >
         <X size={14} />

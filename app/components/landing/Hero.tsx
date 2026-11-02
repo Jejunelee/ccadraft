@@ -6,56 +6,30 @@ import Announcement from "@/app/components/landing/Announcement";
 
 const bootcamps = [
   {
-    title: "Beyond the Plate: The Profit Bootcamp",
-    by: "Food-business finance, with Pinky Velez Poe",
+    title: "Spirit & Service: An Immersion in Bartending",
+    by: "Arcadius Rybak of Toma Toma",
     rows: [
-      ["Format", "Full-day, hands-on"],
-      ["Venue", "CCA Manila, BGC"],
-      ["Next run", "New cohort forming"],
-      ["Includes", "Meals, snacks & certificate"],
+      ["Format", "Training"],
+      ["When", "Nov 9–12, 2026"],
+      ["Hours", "11AM–3PM"],
+      ["Venue", "CCA BGC, Taguig"],
     ],
-    price: "₱12,000",
-    note: "per participant · limited seats",
-    cta: "Join the waitlist",
+    price: "Nov 9–12",
+    note: "2026 · 11AM–3PM",
+    cta: "See the calendar",
   },
   {
-    title: "Menu Development & Costing",
-    by: "Build profitable, executable menus",
+    title: "The New Breed of Filipino Hospitality",
+    by: "Isabel Lozano of Decorum by MIL",
     rows: [
-      ["Format", "Two half-days"],
-      ["Venue", "CCA Manila, BGC"],
-      ["Next run", "New cohort forming"],
-      ["Includes", "Templates & certificate"],
+      ["Format", "Guest experience"],
+      ["When", "Oct 28, Nov 4, 11 & 18"],
+      ["Hours", "9AM–4PM"],
+      ["Venue", "CCA BGC"],
     ],
-    price: "Pricing on request",
-    note: "early-bird rates available",
-    cta: "Register interest",
-  },
-  {
-    title: "Kitchen & Bakeshop Operations",
-    by: "Systems that run without you",
-    rows: [
-      ["Format", "Full-day, hands-on"],
-      ["Venue", "CCA Manila, BGC"],
-      ["Next run", "New cohort forming"],
-      ["Includes", "SOP toolkit & certificate"],
-    ],
-    price: "Pricing on request",
-    note: "early-bird rates available",
-    cta: "Register interest",
-  },
-  {
-    title: "Culinary Sales Training",
-    by: "Turn your team into confident sellers",
-    rows: [
-      ["Format", "Half-day"],
-      ["Venue", "CCA Manila, BGC"],
-      ["Next run", "New cohort forming"],
-      ["Includes", "Workbook & certificate"],
-    ],
-    price: "Pricing on request",
-    note: "team rates available",
-    cta: "Register interest",
+    price: "Four dates",
+    note: "2026 · 9AM–4PM",
+    cta: "See the calendar",
   },
 ];
 
@@ -80,31 +54,31 @@ export default function Hero() {
   const slide = bootcamps[index];
 
   return (
-    <section id="bootcamps" className="flex min-h-[calc(100dvh-66px)] flex-col bg-[#f4f7f8] font-jost">
+    <section id="bootcamps" className="flex flex-col bg-[#f4f7f8] font-jost lg:min-h-[calc(100dvh-66px)]">
       <Announcement />
-      <div className="mx-auto grid w-full max-w-[1120px] flex-1 items-center gap-10 px-6 py-10 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:gap-12 lg:py-8">
-        <div>
-          <span className="inline-flex rounded-full bg-[#AFCFE4]/50 px-3.5 py-1.5 font-poppins text-[13px] font-semibold text-[#225475]">
-            Learn · <span className="mx-1 text-black">Connect</span> · Grow
+      <div className="mx-auto grid w-full max-w-[1280px] flex-1 items-center gap-8 px-5 py-8 lg:grid-cols-[minmax(0,1.22fr)_minmax(0,0.78fr)] lg:gap-14 lg:px-6 lg:py-8">
+        <div className="arrive">
+          <span className="inline-flex rounded-full bg-[#AFCFE4]/50 px-3.5 py-1.5 font-poppins text-base font-semibold text-[#225475]">
+            Learn · <em className="phrase mx-1 text-[#225475]">Connect</em> · Grow
           </span>
-          <h1 className="mt-5 font-poppins text-[2.75rem] leading-[0.98] font-semibold tracking-tight text-black sm:text-6xl lg:text-[4.1rem]">
-            Build a food business that lasts.
+          <h1 className="mt-5 font-poppins text-[2.35rem] leading-[1.02] font-semibold tracking-tight text-black lg:text-[4.1rem] lg:leading-[0.98]">
+            Build a food business that <em className="phrase">lasts.</em>
           </h1>
-          <p className="mt-5 max-w-[36ch] text-lg leading-relaxed text-[#5c6b73]">
+          <p className="descriptor mt-4 max-w-[48ch] text-[#5c6b73] lg:mt-5">
             CCA Manila&apos;s Center for Food Entrepreneurship — connecting food businesses to the knowledge, experts, and industry that help them grow.
           </p>
-          <div className="mt-7 flex flex-wrap gap-3">
+          <div className="mt-6 flex flex-col gap-3 lg:mt-7 lg:flex-row lg:flex-wrap">
             <a
               href="https://events.ccaconnect.co"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex rounded-full bg-[#225475] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#1b445e]"
+              className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#225475] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#1b445e] lg:min-h-0 lg:justify-start"
             >
               See upcoming bootcamps
             </a>
             <a
               href="#work"
-              className="inline-flex rounded-full border border-black/15 bg-white px-5 py-3 text-sm font-semibold text-black transition-colors hover:border-black/40"
+              className="inline-flex min-h-12 items-center justify-center rounded-full border border-black/15 bg-white px-5 py-3 text-sm font-semibold text-black transition-colors hover:border-black/40 lg:min-h-0 lg:justify-start"
             >
               How we work with you
             </a>
@@ -112,23 +86,23 @@ export default function Hero() {
         </div>
 
         <aside
-          className="flex w-full flex-col justify-self-stretch rounded-[22px] bg-[#0a0a0a] p-6 text-white shadow-[0_8px_24px_rgba(10,10,10,0.12)] sm:p-8"
+          className="arrive arrive-late flex w-full flex-col justify-self-end rounded-[22px] bg-[#0a0a0a] p-5 text-white shadow-[0_8px_24px_rgba(10,10,10,0.12)] lg:max-w-[440px] lg:p-7"
           aria-roledescription="carousel"
-          aria-label="Upcoming bootcamps"
+          aria-label="Coming up"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
           onFocus={() => setPaused(true)}
           onBlur={() => setPaused(false)}
         >
           <div className="flex items-center justify-between gap-3">
-            <span className="rounded-full border border-white/15 px-3 py-1 text-[11px] font-semibold tracking-[0.14em] text-[#AFCFE4] uppercase">
-              Upcoming bootcamps
+            <span className="kicker rounded-full border border-white/15 px-3 py-1 text-[#AFCFE4]">
+              Coming up
             </span>
             <div className="flex gap-1.5">
               <button
                 type="button"
                 onClick={() => go(index - 1)}
-                className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15 text-white hover:border-[#AFCFE4] hover:text-[#AFCFE4]"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white hover:border-[#AFCFE4] hover:text-[#AFCFE4] lg:h-8 lg:w-8"
                 aria-label="Previous bootcamp"
               >
                 <ChevronLeft size={16} />
@@ -136,7 +110,7 @@ export default function Hero() {
               <button
                 type="button"
                 onClick={() => go(index + 1)}
-                className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15 text-white hover:border-[#AFCFE4] hover:text-[#AFCFE4]"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white hover:border-[#AFCFE4] hover:text-[#AFCFE4] lg:h-8 lg:w-8"
                 aria-label="Next bootcamp"
               >
                 <ChevronRight size={16} />
@@ -144,10 +118,10 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="mt-4 flex flex-col">
-            <h2 className="h-[2.8em] font-poppins text-xl leading-snug font-semibold text-white">{slide.title}</h2>
-            <p className="mt-1.5 min-h-[2.5rem] text-sm leading-snug text-white/60">{slide.by}</p>
-            <div className="mt-4 flex min-h-[9.25rem] flex-col gap-2.5 border-t border-white/10 pt-4 text-sm">
+          <div key={index} className="slide-in mt-4 flex flex-col">
+            <h2 className="font-poppins text-xl leading-snug text-white lg:h-[4.2em]">{slide.title}</h2>
+            <p className="mt-1.5 text-sm leading-snug text-white/60 lg:min-h-[2.5rem]">{slide.by}</p>
+            <div className="mt-4 flex flex-col gap-2.5 border-t border-white/10 pt-4 text-sm lg:min-h-[9.25rem]">
               {slide.rows.map(([label, value]) => (
                 <div key={label} className="flex gap-3">
                   <span className="w-[74px] shrink-0 text-white/50">{label}</span>
@@ -155,15 +129,13 @@ export default function Hero() {
                 </div>
               ))}
             </div>
-            <p className="mt-4 min-h-[3.25rem] font-poppins text-2xl leading-none font-semibold text-white">
+            <p className="mt-4 font-poppins text-2xl leading-none font-semibold text-white lg:min-h-[3.25rem]">
               {slide.price}
-              <span className="mt-1.5 block font-jost text-xs leading-snug font-normal text-white/50">{slide.note}</span>
+              <span className="mt-1.5 block font-jost text-sm leading-snug font-normal text-white/50">{slide.note}</span>
             </p>
             <a
-              href="https://events.ccaconnect.co"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 flex h-10 w-full items-center justify-center rounded-full bg-white text-sm font-semibold text-black transition-colors hover:bg-[#f4f7f8]"
+              href="#programs"
+              className="mt-4 flex h-12 w-full items-center justify-center rounded-full bg-white text-sm font-semibold text-black transition-colors hover:bg-[#f4f7f8] lg:h-10"
             >
               {slide.cta}
             </a>
@@ -178,7 +150,7 @@ export default function Hero() {
                 aria-label={`Show bootcamp ${dotIndex + 1}`}
                 aria-current={dotIndex === index ? "true" : undefined}
                 onClick={() => go(dotIndex)}
-                className={`h-1.5 rounded-full transition-all ${
+                className={`h-1.5 rounded-full transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
                   dotIndex === index ? "w-5 bg-[#AFCFE4]" : "w-1.5 bg-white/25"
                 }`}
               />

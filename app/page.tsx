@@ -2,6 +2,7 @@ import Hero from "@/app/components/landing/Hero";
 import Section1 from "@/app/components/landing/Section1";
 import Offers from "@/app/components/landing/Offers";
 import MediaReel from "@/app/components/landing/MediaReel";
+import Programs from "@/app/components/landing/Programs";
 import Stats from "@/app/components/landing/Stats";
 import Practice from "@/app/components/landing/Practice";
 import ExpertsPreview from "@/app/components/landing/ExpertsPreview";
@@ -16,6 +17,7 @@ export default function Home() {
       <Section1 />
       <Offers />
       <MediaReel />
+      <Programs />
       <Stats />
       <Practice />
       <ExpertsPreview />

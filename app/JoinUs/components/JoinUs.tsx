@@ -232,7 +232,7 @@ export default function JoinUs() {
   };
 
   return (
-    <section className="w-full bg-[#f4f7f8] px-6 py-12 font-jost">
+    <section className="w-full bg-[#f4f7f8] px-5 py-8 font-jost lg:px-6 lg:py-12">
       <div className="mx-auto max-w-[720px]">
         
         {/* Status Message */}
@@ -256,7 +256,7 @@ export default function JoinUs() {
           <span className="text-sm text-[#5c6b73]">Step {step} of 3</span>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6 rounded-2xl border border-black/10 bg-white p-8 shadow-[0_8px_24px_rgba(10,10,10,0.06)] md:p-10">
+        <form onSubmit={handleSubmit} className="space-y-6 rounded-2xl border border-black/10 bg-white p-5 shadow-[0_8px_24px_rgba(10,10,10,0.06)] md:p-10">
           
           {/* Step 1: Interest and Date */}
           {step === 1 && (

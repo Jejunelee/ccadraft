@@ -45,7 +45,7 @@ export default async function DashboardPage() {
   return (
     <div className="min-h-screen bg-[#f4f7f8] font-jost text-black">
       <nav className="sticky top-0 z-50 border-b border-black/10 bg-[#f4f7f8]/90 backdrop-blur-md">
-        <div className="mx-auto flex h-[66px] w-full max-w-[1120px] items-center gap-4 px-6">
+        <div className="mx-auto flex h-[66px] w-full max-w-[1280px] items-center gap-4 px-6">
           <Link href="/" className="flex items-center" aria-label="CCA Connect">
             <Image src="/logo.png" alt="CCA Connect" width={614} height={361} className="h-9 w-auto" />
           </Link>
@@ -58,7 +58,7 @@ export default async function DashboardPage() {
         </div>
       </nav>
 
-      <div className="mx-auto w-full max-w-[1120px] px-6 py-10">
+      <div className="mx-auto w-full max-w-[1280px] px-5 py-8 lg:px-6 lg:py-10">
         <div className="mb-8 grid grid-cols-2 gap-3 lg:grid-cols-4">
           {statCards.map((card) => (
             <div key={card.label} className="rounded-2xl border border-black/10 bg-white p-4">

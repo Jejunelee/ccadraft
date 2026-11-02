@@ -24,9 +24,9 @@ const connections = [
 export default function Section1() {
   return (
     <section className="border-y border-black/10 bg-[#E7F5F5] font-jost">
-      <div className="mx-auto w-full max-w-[1120px] px-6 py-14 sm:py-16">
-        <p className="max-w-[28ch] font-poppins text-2xl leading-snug font-semibold text-black sm:text-[1.7rem]">
-          The name is the model. We <span className="text-[#225475]">connect</span> the food industry — four ways.
+      <div className="mx-auto w-full max-w-[1280px] px-5 py-10 lg:px-6 lg:py-16">
+        <p className="max-w-[28ch] font-poppins text-xl leading-snug font-semibold text-black lg:text-[1.7rem]">
+          The name is the model. We <em className="phrase text-[#225475]">connect</em> the food industry — four ways.
         </p>
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {connections.map((item) => (
@@ -35,7 +35,7 @@ export default function Section1() {
                 <span className="text-xs font-bold text-[#225475]">{item.num}</span>
                 {item.title}
               </h2>
-              <p className="mt-2 text-sm leading-relaxed text-[#5c6b73]">{item.text}</p>
+              <p className="mt-2 text-lg leading-relaxed text-[#5c6b73]">{item.text}</p>
             </div>
           ))}
         </div>
