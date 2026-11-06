@@ -1,5 +1,19 @@
 import Link from "next/link";
 
+const logos: { name: string; src: string; className: string; plate?: boolean }[] = [
+  { name: "Department of Tourism", src: "/partners/dot.svg", className: "h-16 w-auto sm:h-[4.5rem]" },
+  { name: "CITEM", src: "/partners/citem.png", className: "h-12 w-auto sm:h-14", plate: true },
+  { name: "U.S. Department of Agriculture", src: "/partners/usda.svg", className: "h-14 w-auto sm:h-16", plate: true },
+  { name: "U.S. Dairy Export Council", src: "/partners/usdec.png", className: "h-12 w-auto sm:h-14" },
+  { name: "Korean Food Promotion Institute", src: "/partners/kfpi.png", className: "h-10 w-auto sm:h-12", plate: true },
+  { name: "Austrade", src: "/partners/austrade.svg", className: "h-8 w-auto sm:h-10" },
+  { name: "New Zealand Trade and Enterprise", src: "/partners/nzte.svg", className: "h-9 w-auto sm:h-11" },
+  { name: "RATIONAL", src: "/partners/rational.svg", className: "h-10 w-auto sm:h-12" },
+  { name: "Breville", src: "/partners/breville.svg", className: "h-8 w-auto sm:h-10" },
+  { name: "NutriAsia", src: "/partners/nutriasia.svg", className: "h-16 w-auto sm:h-[4.5rem]", plate: true },
+  { name: "Nestlé", src: "/partners/nestle.svg", className: "h-8 w-auto sm:h-10" },
+];
+
 const cards = [
   {
     title: "Sponsored bootcamps & summits",
@@ -31,7 +45,14 @@ export default function Partners() {
         <h2 className="mt-3 max-w-[16ch] font-poppins text-[1.75rem] leading-tight font-semibold tracking-tight lg:text-4xl">
           Connect your brand to the food-business <em className="phrase">community.</em>
         </h2>
-        <p className="mt-4 max-w-[54ch] descriptor text-white/65">
+        <ul className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-5" aria-label="Partner brands">
+          {logos.map((logo) => (
+            <li key={logo.name} className={logo.plate ? "rounded-2xl bg-white px-3 py-2" : undefined}>
+              <img src={logo.src} alt={logo.name} className={logo.className} />
+            </li>
+          ))}
+        </ul>
+        <p className="mt-8 max-w-[54ch] descriptor text-white/65">
           The owners, chefs, and operators who decide what to buy are already in our room. We help food and beverage brands reach, educate, and build loyalty with them — through programs backed by CCA Manila.
         </p>
 

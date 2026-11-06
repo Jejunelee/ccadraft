@@ -3,9 +3,12 @@
 import { useState } from "react";
 import { X } from "lucide-react";
 
-const message = "Summit tickets are on sale. Get the early bird discount now.";
-const linkText = "Get tickets";
-const linkUrl = "https://www.events.ccaconnect.co";
+const messages = [
+  "Apply for the Food Venture Accelerator Program (January Cohort)",
+  "Apply for the Food Venture Accelerator Program with Entrepreneur in Residence (Jose Magsaysay Jr.)",
+];
+const linkText = "Apply";
+const linkUrl = "/JoinUs";
 
 const loop = Array.from({ length: 6 }, (_, index) => index);
 
@@ -24,11 +27,9 @@ export default function Announcement() {
                 const primary = copy === 0 && item === 0;
                 return (
                   <p key={item} className="flex items-center px-4 whitespace-nowrap" aria-hidden={primary ? undefined : true}>
-                    <span>{message}</span>
+                    <span>{messages[item % messages.length]}</span>
                     <a
                       href={linkUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
                       className="ml-3 font-semibold text-[#225475] underline-offset-2 hover:underline"
                       tabIndex={primary ? undefined : -1}
                     >

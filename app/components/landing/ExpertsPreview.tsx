@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { expertName, experts } from "@/app/experts/experts";
+import { experts } from "@/app/experts/experts";
 
 export default function ExpertsPreview() {
   return (
@@ -22,9 +22,9 @@ export default function ExpertsPreview() {
               className="lift flex h-full w-[72%] shrink-0 snap-start flex-col rounded-2xl border border-black/10 bg-white p-5 lg:w-auto lg:shrink"
             >
               <div className="relative mb-3 h-11 w-11 overflow-hidden rounded-full bg-[#225475]">
-                <Image src={expert.image} alt="" fill className="object-cover object-[center_28%]" sizes="44px" />
+                {expert.image ? <Image src={expert.image} alt="" fill className="object-cover object-[center_28%]" sizes="44px" /> : null}
               </div>
-              <p className="font-poppins text-lg font-semibold text-black">{expertName(expert.name)}</p>
+              <p className="font-poppins text-lg font-semibold text-black">{expert.name}</p>
               <p className="mt-auto pt-2 text-base leading-snug text-[#5c6b73]">{expert.role}</p>
             </Link>
           ))}

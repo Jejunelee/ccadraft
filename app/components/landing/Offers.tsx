@@ -31,9 +31,6 @@ export default function Offers() {
     <section id="work" className="bg-[#f4f7f8] font-jost">
       <div className="mx-auto w-full max-w-[1280px] px-5 py-12 lg:px-6 lg:py-20">
         <p className="kicker text-[#225475] uppercase">How we work with you</p>
-        <h2 className="mt-3 max-w-[16ch] font-poppins text-[1.75rem] leading-tight font-semibold tracking-tight text-black lg:text-4xl">
-          Two ways in — one <em className="phrase">team</em> behind both.
-        </h2>
         <p className="mt-4 max-w-[58ch] descriptor text-[#5c6b73]">
           Most food businesses meet us in a workshop. When you&apos;re ready to go deeper, the same experts come in to work on your operation directly.
         </p>
@@ -60,11 +57,11 @@ export default function Offers() {
               <div className="mt-3 flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
                 <p className="text-base leading-snug text-[#5c6b73]">{way.foot}</p>
                 {way.external ? (
-                  <a href={way.href} target="_blank" rel="noopener noreferrer" className="text-base font-semibold text-[#225475] after:absolute after:inset-0 hover:underline">
+                  <a href={way.href} target="_blank" rel="noopener noreferrer" className="text-base text-black/70 after:absolute after:inset-0 hover:text-black">
                     Explore →
                   </a>
                 ) : (
-                  <Link href={way.href} className="text-base font-semibold text-[#225475] after:absolute after:inset-0 hover:underline">
+                  <Link href={way.href} className="text-base text-black/70 after:absolute after:inset-0 hover:text-black">
                     Explore →
                   </Link>
                 )}

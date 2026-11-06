@@ -7,7 +7,7 @@ const connections = [
   {
     num: "02",
     title: "To experts",
-    text: "Working chefs, operators, and specialists — not career lecturers.",
+    text: "Chefs, operators, designers, and specialists that shape the Food and Hospitality industries.",
   },
   {
     num: "03",
@@ -28,14 +28,14 @@ export default function Section1() {
         <p className="max-w-[28ch] font-poppins text-xl leading-snug font-semibold text-black lg:text-[1.7rem]">
           The name is the model. We <em className="phrase text-[#225475]">connect</em> the food industry — four ways.
         </p>
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {connections.map((item) => (
-            <div key={item.num}>
-              <h2 className="flex items-baseline gap-2 font-poppins text-base font-semibold text-black">
-                <span className="text-xs font-bold text-[#225475]">{item.num}</span>
+            <div key={item.num} className="rounded-2xl border border-[#225475]/20 bg-white p-5 shadow-[0_12px_32px_rgba(34,84,117,0.1)]">
+              <h2 className="font-poppins text-xl leading-snug font-semibold text-black lg:text-2xl">
+                <span className="mr-2 inline-flex rounded-full bg-[#225475] px-2.5 py-1 align-middle text-xs font-bold tracking-wide text-white">{item.num}</span>
                 {item.title}
               </h2>
-              <p className="mt-2 text-lg leading-relaxed text-[#5c6b73]">{item.text}</p>
+              <p className="mt-3 text-base leading-relaxed text-[#5c6b73]">{item.text}</p>
             </div>
           ))}
         </div>

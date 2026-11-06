@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 const steps = [
   {
     title: "Share us your vision",
@@ -28,7 +26,7 @@ export default function HowItWorks() {
           How does it <em className="phrase">work</em>?
         </h2>
         <p className="mt-4 max-w-[52ch] descriptor text-[#5c6b73]">
-          Your gateway to the Philippines&apos; top Food, Beverage, and Hospitality experts—streamlined for success.
+          Your gateway to the Philippines&apos; top Food, Beverage, and Hospitality experts.
         </p>
         <div className="mt-8 grid gap-4 md:grid-cols-2">
           {steps.map((step, index) => (
@@ -39,10 +37,9 @@ export default function HowItWorks() {
             </article>
           ))}
         </div>
-        <p className="mt-6 text-sm text-[#5c6b73]">Simple, transparent, and human-first.</p>
-        <Link href="/JoinUs" className="mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#225475] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#1b445e] lg:w-auto lg:min-h-0 lg:justify-start">
-          Start a project
-        </Link>
+        <a href="mailto:connect@cca-manila.edu.ph" className="mt-8 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#225475] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#1b445e] lg:w-auto lg:min-h-0 lg:justify-start">
+          Tell us about your project
+        </a>
       </div>
     </section>
   );

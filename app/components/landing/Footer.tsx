@@ -10,7 +10,7 @@ const columns = [
     links: [
       { label: "Bootcamps", href: "https://events.ccaconnect.co", external: true },
       { label: "Workshops & Events", href: "https://events.ccaconnect.co", external: true },
-      { label: "Consultancy", href: "/#practice" },
+      { label: "Consultancy", href: "/experts" },
       { label: "Experts", href: "/experts" },
     ],
   },
@@ -20,7 +20,6 @@ const columns = [
       { label: "Brand Partnerships", href: "/#partners" },
       { label: "Sponsorships", href: "/JoinUs" },
       { label: "Become an expert", href: "/JoinUs" },
-      { label: "About Us", href: "/about" },
     ],
   },
 ];
@@ -59,7 +58,7 @@ export default function Footer() {
         <div>
           <Image src="/logo.png" alt="CCA Connect" width={120} height={80} className="h-12 w-auto" />
           <p className="mt-4 max-w-[28ch] text-sm leading-relaxed text-[#5c6b73]">
-            The Center for Food Entrepreneurship — the industry-engagement arm of CCA Manila.
+            CCA Manila&apos;s Center for Food Entrepreneurship.
           </p>
           <form onSubmit={handleSubmit} className="mt-5">
             <label htmlFor="footer-email" className="text-sm font-semibold">
@@ -111,8 +110,8 @@ export default function Footer() {
 
         <div className="col-span-2 lg:col-span-1">
           <h2 className="text-sm font-semibold tracking-[0.12em] text-[#5c6b73] uppercase">Get in touch</h2>
-          <a href="mailto:piagtrinidad@cca-manila.edu.ph" className="mt-3 block text-sm font-semibold break-all hover:text-[#225475] lg:break-normal">
-            piagtrinidad@cca-manila.edu.ph
+          <a href="mailto:connect@cca-manila.edu.ph" className="mt-3 block text-sm font-semibold break-all hover:text-[#225475] lg:break-normal">
+            connect@cca-manila.edu.ph
           </a>
           <p className="mt-2 text-lg leading-relaxed text-[#5c6b73]">
             CCA Manila Campus

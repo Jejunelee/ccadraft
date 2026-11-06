@@ -15,10 +15,10 @@ type NavigationLink = {
 const NAVIGATION_LINKS: NavigationLink[] = [
   { href: "/#programs", label: "Bootcamps & Events" },
   { href: "/#work", label: "How We Work" },
-  { href: "/#practice", label: "Consultancy" },
+  { href: "/experts#practice", label: "Consultancy" },
   { href: "/training", label: "Training" },
   { href: "/experts", label: "Experts" },
-  { href: "/#partners", label: "Partners" },
+  { href: "/#partners", label: "Partner With Us" },
   { href: "/about", label: "About Us" },
 ];
 

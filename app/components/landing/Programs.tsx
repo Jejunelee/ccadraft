@@ -27,9 +27,7 @@ function ProgramCard({ program }: { program: Program }) {
             sizes="(max-width: 1024px) 100vw, 360px"
           />
         ) : (
-          <div className="flex h-full items-end bg-[#0a0a0a] p-5">
-            <p className="max-w-[16ch] font-poppins text-[1.65rem] leading-tight text-[#AFCFE4]">{program.kind}</p>
-          </div>
+          <div className="h-full bg-[#0a0a0a]" />
         )}
         {program.past ? (
           <span className="absolute top-3 left-3 rounded-full bg-[#AFCFE4] px-3 py-1 text-xs tracking-[0.14em] text-[#0a0a0a] uppercase">
@@ -55,12 +53,12 @@ function ProgramCard({ program }: { program: Program }) {
         {program.detail ? <p className="mt-3 text-base text-black">{program.detail}</p> : null}
         <div className="mt-auto pt-5">
           <a
-            href={EVENTS_URL}
+            href={program.href ?? EVENTS_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex h-11 items-center justify-center rounded-full bg-[#225475] px-4 text-sm font-semibold text-white transition-colors hover:bg-[#1b445e]"
           >
-            Learn More
+            {program.href && !program.past ? "Save Your Spot" : "Learn More"}
           </a>
         </div>
       </div>
@@ -88,11 +86,11 @@ export default function Programs() {
     <section id="programs" className="scroll-mt-20 bg-[#f4f7f8] font-jost" aria-labelledby="programs-heading">
       <div className="mx-auto w-full max-w-[1280px] px-5 py-12 lg:px-6 lg:py-20">
         <p className="kicker text-[#225475]">Bootcamps, events &amp; summits</p>
-        <h2 id="programs-heading" className="mt-3 max-w-[18ch] font-poppins text-[1.75rem] leading-tight font-semibold tracking-tight text-black lg:text-4xl">
+        <h2 id="programs-heading" className="mt-3 font-poppins text-[clamp(1.45rem,2.6vw,2.25rem)] leading-tight font-semibold tracking-tight whitespace-nowrap text-black">
           The rooms you can <em className="phrase">join.</em>
         </h2>
         <p className="descriptor mt-4 max-w-[54ch] text-[#5c6b73]">
-          A growing calendar. Three at a time, so the next one is easy to find.
+          Join us in our upcoming events.
         </p>
 
         <div className="page-rise mt-8 grid gap-4 sm:mt-10 lg:grid-cols-3 lg:gap-5" key={safePage}>

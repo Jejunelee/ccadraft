@@ -19,6 +19,7 @@ export const programs: Program[] = [
     when: "Nov 9–12, 2026 · 11AM–3PM",
     where: "CCA BGC, Taguig",
     with: "Arcadius Rybak, Toma Toma",
+    href: "https://www.eventbrite.com/e/spirit-service-an-immersion-in-bartending-with-arcadius-rybak-4-days-tickets-2002182967152",
   },
   {
     title: "The New Breed of Filipino Hospitality",
@@ -26,6 +27,7 @@ export const programs: Program[] = [
     when: "Oct 28, Nov 4, 11 & 18, 2026 · 9AM–4PM",
     where: "CCA BGC",
     with: "Isabel Lozano, Decorum by MIL",
+    href: "https://www.eventbrite.com/e/the-new-breed-of-filipino-hospitality-guest-experience-bootcamp-4-days-tickets-2000256457911",
   },
   {
     title: "The Business Owner HR Blueprint: Scale Without the Chaos",
@@ -35,6 +37,7 @@ export const programs: Program[] = [
     with: "RL Garcia",
     detail: "Second run",
     past: true,
+    href: "https://www.eventbrite.com/e/the-business-owner-hr-blueprint-scale-without-the-chaos-tickets-2003955252104",
   },
   {
     title: "Beyond the Plate: Food Business Profit Bootcamp",
@@ -53,6 +56,7 @@ export const programs: Program[] = [
     with: "RL Garcia",
     detail: "First run",
     past: true,
+    href: "https://www.eventbrite.com/e/the-business-owner-hr-blueprint-scale-without-the-chaos-tickets-2003955252104",
   },
   {
     title: "CCA Connect Summit",
@@ -61,6 +65,7 @@ export const programs: Program[] = [
     where: "CCA Connect",
     with: "RL Garcia, Jose “Jomag” Magsaysay Jr., and Prof. Xavier Alpasa",
     past: true,
+    href: "https://www.eventbrite.com/e/from-table-to-business-cca-connect-summit-2026-tickets-1991347842001",
   },
   {
     title: "CCA Connect Bootcamp: Experience is the New Menu",

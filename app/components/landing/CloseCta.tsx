@@ -12,9 +12,7 @@ export default function CloseCta() {
         </p>
         <div className="mt-7 flex flex-col items-stretch justify-center gap-3 lg:flex-row lg:flex-wrap lg:items-center">
           <a
-            href="https://events.ccaconnect.co"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/#programs"
             className="inline-flex min-h-12 items-center justify-center rounded-full bg-white px-5 py-3 text-sm font-semibold text-black hover:bg-[#f4f7f8] lg:min-h-0"
           >
             See upcoming bootcamps

@@ -23,13 +23,12 @@ export default function Section1() {
         <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
           {services.map((service) => {
             const card = (
-              <article className={`flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-[#f4f7f8] ${service.slug ? "" : "opacity-70"}`}>
+              <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-[#f4f7f8]">
                 <div className="relative aspect-square w-full shrink-0 bg-[#E7F5F5]">
                   <Image src={service.image} alt={service.title} fill className="object-contain object-center" sizes="(max-width: 1024px) 45vw, 22vw" />
                 </div>
                 <div className="flex min-h-[5.5rem] flex-1 flex-col p-4">
                   <h3 className="font-poppins text-base leading-snug font-semibold text-black">{service.title}</h3>
-                  {!service.slug ? <p className="mt-1 text-sm font-semibold tracking-wide text-[#5c6b73] uppercase">Coming soon</p> : null}
                 </div>
               </article>
             );
