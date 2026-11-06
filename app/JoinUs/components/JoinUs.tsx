@@ -281,6 +281,8 @@ export default function JoinUs() {
                     <option value="" disabled>Select an option</option>
                     <option value="Want to be a Consultant">Want to be a Consultant</option>
                     <option value="Want to Consult a Professional">Want to Consult a Professional</option>
+                    <option value="Others">Others</option>
+                    <option value="Events/Bootcamps/Summit">Events/Bootcamps/Summit</option>
                   </select>
                   {/* Custom dropdown arrow */}
                   <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">

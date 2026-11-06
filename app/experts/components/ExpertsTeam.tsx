@@ -16,7 +16,13 @@ function Portrait({ expert }: { expert: Expert }) {
     <>
       <div className="relative aspect-[4/5] w-full shrink-0 bg-[#E7F5F5]">
         {expert.image ? (
-          <Image src={expert.image} alt={expert.name} fill className="object-cover object-center" sizes="(max-width: 1024px) 72vw, 22vw" />
+          <Image
+            src={expert.image}
+            alt={expert.name}
+            fill
+            className={`object-cover ${expert.image.includes("magsaysay") ? "object-[center_12%]" : "object-center"}`}
+            sizes="(max-width: 1024px) 72vw, 22vw"
+          />
         ) : (
           <span className="flex h-full items-center justify-center font-poppins text-4xl text-[#225475]">{initials(expert.name)}</span>
         )}

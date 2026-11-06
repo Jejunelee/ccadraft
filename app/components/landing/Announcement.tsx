@@ -8,7 +8,7 @@ const messages = [
   "Apply for the Food Venture Accelerator Program with Entrepreneur in Residence (Jose Magsaysay Jr.)",
 ];
 const linkText = "Apply";
-const linkUrl = "/JoinUs";
+const linkUrl = "/programs/accelerator";
 
 const loop = Array.from({ length: 6 }, (_, index) => index);
 

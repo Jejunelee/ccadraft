@@ -2,18 +2,27 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 type NavigationLink = {
   href: string;
   label: string;
   external?: boolean;
+  children?: { href: string; label: string }[];
 };
+
+const PROGRAM_LINKS = [
+  { href: "/programs", label: "Programs overview" },
+  { href: "/programs/masterclass", label: "Food Entrepreneurship Masterclass" },
+  { href: "/programs/accelerator", label: "Food Venture Accelerator" },
+  { href: "/#programs", label: "CCA Connect Bootcamps & Events" },
+];
 
 const NAVIGATION_LINKS: NavigationLink[] = [
   { href: "/#programs", label: "Bootcamps & Events" },
+  { href: "/programs", label: "Programs", children: PROGRAM_LINKS },
   { href: "/#work", label: "How We Work" },
   { href: "/experts#practice", label: "Consultancy" },
   { href: "/training", label: "Training" },
@@ -22,16 +31,43 @@ const NAVIGATION_LINKS: NavigationLink[] = [
   { href: "/about", label: "About Us" },
 ];
 
+function programLinkCurrent(pathname: string, href: string) {
+  if (href.startsWith("/#") || href.startsWith("http")) return false;
+  if (href === "/programs") return pathname === "/programs";
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
 export default function Header() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [programsOpen, setProgramsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const programsRef = useRef<HTMLDivElement>(null);
 
   const closeMenu = () => setIsMobileMenuOpen(false);
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
+    setProgramsOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    if (!programsOpen) return;
+    const onPointer = (event: MouseEvent) => {
+      const target = event.target as HTMLElement | null;
+      if (target?.closest("[data-programs-toggle]")) return;
+      if (!programsRef.current?.contains(target)) setProgramsOpen(false);
+    };
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setProgramsOpen(false);
+    };
+    document.addEventListener("mousedown", onPointer);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onPointer);
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [programsOpen]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -88,7 +124,44 @@ export default function Header() {
 
         <nav className="hidden shrink-0 items-center gap-3 xl:gap-4 lg:flex" aria-label="Main navigation">
           {NAVIGATION_LINKS.map((link) =>
-            link.external ? (
+            link.children ? (
+              <div key={link.label} className="relative" ref={programsRef}>
+                <button
+                  type="button"
+                  aria-expanded={programsOpen}
+                  aria-haspopup="true"
+                  aria-current={pathname === "/programs" || pathname.startsWith("/programs/") ? "page" : undefined}
+                  data-programs-toggle
+                  onClick={() => setProgramsOpen((open) => !open)}
+                  className={`inline-flex items-center gap-1 text-sm font-normal whitespace-nowrap transition-colors ${
+                    island
+                      ? pathname === "/programs" || pathname.startsWith("/programs/")
+                        ? "text-white"
+                        : "text-white/75 hover:text-white"
+                      : pathname === "/programs" || pathname.startsWith("/programs/")
+                        ? "text-black"
+                        : "text-[#5c6b73] hover:text-black"
+                  }`}
+                >
+                  {link.label}
+                  <ChevronDown size={14} className={programsOpen ? "rotate-180" : ""} aria-hidden="true" />
+                </button>
+                {programsOpen ? (
+                  <div className="absolute top-full left-0 z-[60] mt-3 w-72 rounded-2xl border border-black/10 bg-white p-2 text-black shadow-[0_16px_40px_rgba(0,0,0,0.12)]">
+                    {link.children.map((child) => (
+                      <Link
+                        key={child.label}
+                        href={child.href}
+                        aria-current={programLinkCurrent(pathname, child.href) ? "page" : undefined}
+                        className="block rounded-xl px-3 py-2 text-sm text-black hover:bg-[#E7F5F5] focus-visible:bg-[#E7F5F5] focus-visible:outline-none"
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+            ) : link.external ? (
               <a
                 key={link.label}
                 href={link.href}
@@ -148,19 +221,55 @@ export default function Header() {
           aria-label="Mobile navigation"
         >
           <div className="mx-auto flex min-h-full max-w-[1280px] flex-col">
-            {NAVIGATION_LINKS.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                onClick={closeMenu}
-                aria-current={isCurrent(link.href) ? "page" : undefined}
-                className={`border-b border-black/10 py-4 text-lg ${
-                  isCurrent(link.href) ? "font-semibold text-[#225475]" : "font-medium text-black"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {NAVIGATION_LINKS.map((link) =>
+              link.children ? (
+                <div key={link.label} className="border-b border-black/10">
+                  <button
+                    type="button"
+                    aria-expanded={programsOpen}
+                    data-programs-toggle
+                    onClick={() => setProgramsOpen((open) => !open)}
+                    className={`flex w-full items-center justify-between py-4 text-left text-lg ${
+                      pathname === "/programs" || pathname.startsWith("/programs/")
+                        ? "font-semibold text-[#225475]"
+                        : "font-medium text-black"
+                    }`}
+                  >
+                    {link.label}
+                    <ChevronDown size={18} className={programsOpen ? "rotate-180" : ""} aria-hidden="true" />
+                  </button>
+                  {programsOpen ? (
+                    <div className="flex flex-col pb-3">
+                      {link.children.map((child) => (
+                        <Link
+                          key={child.label}
+                          href={child.href}
+                          onClick={closeMenu}
+                          aria-current={programLinkCurrent(pathname, child.href) ? "page" : undefined}
+                          className={`rounded-xl px-3 py-3 text-base ${
+                            programLinkCurrent(pathname, child.href) ? "font-semibold text-[#225475]" : "text-black"
+                          }`}
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
+              ) : (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  onClick={closeMenu}
+                  aria-current={isCurrent(link.href) ? "page" : undefined}
+                  className={`border-b border-black/10 py-4 text-lg ${
+                    isCurrent(link.href) ? "font-semibold text-[#225475]" : "font-medium text-black"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
             <Link
               href="/JoinUs"
               onClick={closeMenu}

@@ -1,13 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Venus } from "lucide-react";
+import { UserRound } from "lucide-react";
 
-const team: { name: string; role?: string; image?: string; slug?: string; symbol?: "woman" }[] = [
+const team: { name: string; role?: string; image?: string; slug?: string; symbol?: "profile" }[] = [
   { name: "Marinela Trinidad", role: "CEO", image: "/about/team/marinela1.png" },
   { name: "Bea Trinidad", role: "PR & Marketing", image: "/about/team/bea.jpg", slug: "bea-trinidad" },
   { name: "Pia Trinidad", image: "/about/team/pia.jpg" },
   { name: "Athena Arevalo", role: "Executive Assistant for Business and Marketing", image: "/about/team/athena.jpg" },
-  { name: "Chai Januya", symbol: "woman" },
+  { name: "Chai Januya", symbol: "profile" },
   { name: "Chamen Manalo", role: "Business Development Manager", image: "/about/team/chamen.jpg" },
 ];
 
@@ -26,9 +26,9 @@ export default function Team() {
                 <div className="relative aspect-[4/5] w-full shrink-0 bg-[#E7F5F5]">
                   {member.image ? (
                     <Image src={member.image} alt={member.name} fill className="object-cover object-center" sizes="(max-width: 1024px) 45vw, 30vw" />
-                  ) : member.symbol === "woman" ? (
+                  ) : member.symbol === "profile" ? (
                     <span className="flex h-full items-center justify-center text-[#225475]" aria-hidden="true">
-                      <Venus size={72} strokeWidth={1.5} />
+                      <UserRound size={72} strokeWidth={1.5} />
                     </span>
                   ) : (
                     <span className="flex h-full items-center justify-center font-poppins text-4xl text-[#225475]">
