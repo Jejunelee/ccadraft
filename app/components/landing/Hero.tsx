@@ -172,9 +172,7 @@ export default function Hero() {
           </p>
           <div className="mt-6 flex flex-col gap-3 lg:mt-7 lg:flex-row lg:flex-wrap">
             <a
-              href="https://events.ccaconnect.co"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#coming-up"
               className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#225475] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#1b445e] lg:min-h-0 lg:justify-start"
             >
               See upcoming bootcamps
@@ -189,6 +187,7 @@ export default function Hero() {
         </div>
 
         <aside
+          id="coming-up"
           className="arrive arrive-late flex w-full flex-col justify-self-end rounded-[22px] bg-[#0a0a0a] p-5 text-white shadow-[0_8px_24px_rgba(10,10,10,0.12)] lg:max-w-[440px] lg:p-7"
           aria-roledescription="carousel"
           aria-label="Coming up"
