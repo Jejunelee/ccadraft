@@ -7,8 +7,6 @@ export type Program = {
   detail?: string;
   past?: boolean;
   image?: string;
-  /** Designed posters should use "contain" so the type stays intact. */
-  fit?: "cover" | "contain";
   href?: string;
 };
 
@@ -20,7 +18,6 @@ export const programs: Program[] = [
     where: "CCA BGC, Taguig",
     with: "Arcadius Rybak, Toma Toma",
     image: "/programs/spirit-service.jpg",
-    fit: "contain",
     href: "https://www.eventbrite.com/e/spirit-service-an-immersion-in-bartending-with-arcadius-rybak-4-days-tickets-2002182967152",
   },
   {
@@ -30,7 +27,6 @@ export const programs: Program[] = [
     where: "CCA BGC",
     with: "Isabel Lozano, Decorum by MIL",
     image: "/programs/new-breed.jpg",
-    fit: "contain",
     href: "https://www.eventbrite.com/e/the-new-breed-of-filipino-hospitality-guest-experience-bootcamp-4-days-tickets-2000256457911",
   },
   {
@@ -41,7 +37,6 @@ export const programs: Program[] = [
     with: "RL Garcia",
     detail: "Second run",
     image: "/programs/hr-blueprint-scale.jpg",
-    fit: "contain",
     href: "https://www.eventbrite.com/e/the-business-owner-hr-blueprint-scale-without-the-chaos-tickets-2003955252104",
   },
   {

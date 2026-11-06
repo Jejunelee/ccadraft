@@ -17,13 +17,13 @@ function pageList(current: number, total: number) {
 function ProgramCard({ program }: { program: Program }) {
   const card = (
     <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_1px_2px_rgba(10,10,10,0.04)]">
-      <div className="relative aspect-[3/2] w-full bg-[#E7F5F5]">
+      <div className="relative aspect-[2/1] w-full bg-[#E7F5F5]">
         {program.image ? (
           <Image
             src={program.image}
             alt=""
             fill
-            className={program.fit === "contain" ? "object-contain object-center" : "object-cover object-center"}
+            className="object-cover object-top"
             sizes="(max-width: 1024px) 100vw, 360px"
           />
         ) : (
