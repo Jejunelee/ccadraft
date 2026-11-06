@@ -6,7 +6,11 @@ import { useEffect, useRef, useState } from "react";
 import Announcement from "@/app/components/landing/Announcement";
 import { programs } from "@/app/data/programs";
 
-const activeEvents = programs.filter((program) => !program.past && program.image);
+const summit = programs.find((program) => program.title === "CCA Connect Summit");
+const summitGroupPhotos = ["01", "10", "12", "13", "17"];
+const summitImages = (summit?.gallery ?? []).filter((src) =>
+  summitGroupPhotos.some((name) => src.endsWith(`/${name}.webp`)),
+);
 
 const bootcamps = [
   {
@@ -50,8 +54,8 @@ function MobileEvents() {
   const [paused, setPaused] = useState(false);
   const dragStart = useRef<number | null>(null);
   const swiped = useRef(false);
-  const count = activeEvents.length;
-  const event = activeEvents[index];
+  const count = summitImages.length;
+  const image = summitImages[index];
 
   const go = (next: number) => {
     setIndex((next + count) % count);
@@ -67,16 +71,16 @@ function MobileEvents() {
     return () => window.clearInterval(timer);
   }, [paused, count]);
 
-  if (!event) return null;
+  if (!image) return null;
 
   return (
     <div className="mt-5 lg:hidden">
       <a
-        href={event.href}
+        href={summit?.href}
         target="_blank"
         rel="noopener noreferrer"
-        className="relative block aspect-[2/1] overflow-hidden rounded-2xl bg-[#E7F5F5]"
-        aria-label={event.title}
+        className="relative block aspect-[4/3] overflow-hidden rounded-2xl bg-[#E7F5F5]"
+        aria-label="CCA Connect Summit"
         onPointerDown={(pointer) => {
           dragStart.current = pointer.clientX;
           setPaused(true);
@@ -98,24 +102,24 @@ function MobileEvents() {
         }}
       >
         <Image
-          key={event.image}
-          src={event.image}
+          key={image}
+          src={image}
           alt=""
           fill
-          className="object-cover object-top"
+          className="object-cover object-center"
           sizes="100vw"
           unoptimized
-          priority
+          priority={index === 0}
         />
       </a>
       {count > 1 ? (
-        <div className="mt-3 flex justify-center gap-1.5" role="tablist" aria-label="Active events">
-          {activeEvents.map((item, dotIndex) => (
+        <div className="mt-3 flex flex-wrap justify-center gap-1.5" role="tablist" aria-label="CCA Connect Summit photos">
+          {summitImages.map((item, dotIndex) => (
             <button
-              key={item.title}
+              key={item}
               type="button"
               role="tab"
-              aria-label={`Show ${item.title}`}
+              aria-label={`Show photo ${dotIndex + 1}`}
               aria-current={dotIndex === index ? "true" : undefined}
               onClick={() => go(dotIndex)}
               className={`h-1.5 rounded-full transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
