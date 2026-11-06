@@ -100,7 +100,7 @@ export async function POST(request: NextRequest) {
 
     // Send email using Resend with unique IDs in the email
     const emailPromise = resend.emails.send({
-      from: 'CCA Connect NoReply <connect@cca-manila.edu.ph>',
+      from: 'CCA Connect NoReply <noreply@ccaconnect.co>',
       to: [yourEmail || 'connect@cca-manila.edu.ph'],
       replyTo: email,
       subject: `[${trackingId}] New Join Us Inquiry: ${fullName} is interested in ${interest}`,

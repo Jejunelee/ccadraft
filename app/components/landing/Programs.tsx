@@ -23,7 +23,7 @@ function ProgramCard({ program }: { program: Program }) {
             src={program.image}
             alt=""
             fill
-            className={program.fit === "contain" ? "object-contain object-center" : "object-cover object-[center_55%]"}
+            className={program.fit === "contain" ? "object-contain object-center" : "object-cover object-center"}
             sizes="(max-width: 1024px) 100vw, 360px"
           />
         ) : (
