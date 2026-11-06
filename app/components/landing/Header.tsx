@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 
@@ -55,7 +56,7 @@ export default function Header() {
     if (!programsOpen) return;
     const onPointer = (event: MouseEvent) => {
       const target = event.target as HTMLElement | null;
-      if (target?.closest("[data-programs-toggle]")) return;
+      if (target?.closest("[data-programs-toggle], [data-mobile-nav]")) return;
       if (!programsRef.current?.contains(target)) setProgramsOpen(false);
     };
     const onKey = (event: KeyboardEvent) => {
@@ -82,10 +83,13 @@ export default function Header() {
       if (event.key === "Escape") setIsMobileMenuOpen(false);
     };
     const previousOverflow = document.body.style.overflow;
+    const main = document.getElementById("content");
     document.body.style.overflow = "hidden";
+    if (main) main.inert = true;
     window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = previousOverflow;
+      if (main) main.inert = false;
       window.removeEventListener("keydown", onKey);
     };
   }, [isMobileMenuOpen]);
@@ -215,9 +219,11 @@ export default function Header() {
         </button>
       </div>
 
-      {isMobileMenuOpen && (
+      {isMobileMenuOpen
+        ? createPortal(
         <nav
-          className="fixed inset-x-0 top-[66px] bottom-0 z-40 overflow-y-auto border-t border-black/10 bg-[#f4f7f8] px-5 pt-2 pb-[max(1.25rem,env(safe-area-inset-bottom))] lg:hidden"
+          data-mobile-nav
+          className="fixed inset-x-0 top-[66px] bottom-0 z-[70] overflow-y-auto border-t border-black/10 bg-[#f4f7f8] px-5 pt-2 pb-[max(1.25rem,env(safe-area-inset-bottom))] lg:hidden"
           aria-label="Mobile navigation"
         >
           <div className="mx-auto flex min-h-full max-w-[1280px] flex-col">
@@ -262,7 +268,7 @@ export default function Header() {
                   href={link.href}
                   onClick={closeMenu}
                   aria-current={isCurrent(link.href) ? "page" : undefined}
-                  className={`border-b border-black/10 py-4 text-lg ${
+                  className={`block border-b border-black/10 py-4 text-lg ${
                     isCurrent(link.href) ? "font-semibold text-[#225475]" : "font-medium text-black"
                   }`}
                 >
@@ -278,8 +284,10 @@ export default function Header() {
               Join Us
             </Link>
           </div>
-        </nav>
-      )}
+        </nav>,
+        document.body,
+      )
+        : null}
     </header>
   );
 }

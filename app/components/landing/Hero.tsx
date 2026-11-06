@@ -2,8 +2,11 @@
 
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Announcement from "@/app/components/landing/Announcement";
+import { programs } from "@/app/data/programs";
+
+const activeEvents = programs.filter((program) => !program.past && program.image);
 
 const bootcamps = [
   {
@@ -42,6 +45,90 @@ const bootcamps = [
   },
 ];
 
+function MobileEvents() {
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const dragStart = useRef<number | null>(null);
+  const swiped = useRef(false);
+  const count = activeEvents.length;
+  const event = activeEvents[index];
+
+  const go = (next: number) => {
+    setIndex((next + count) % count);
+  };
+
+  useEffect(() => {
+    if (paused || count < 2) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
+    const timer = window.setInterval(() => {
+      setIndex((current) => (current + 1) % count);
+    }, 5000);
+    return () => window.clearInterval(timer);
+  }, [paused, count]);
+
+  if (!event) return null;
+
+  return (
+    <div className="mt-5 lg:hidden">
+      <a
+        href={event.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="relative block aspect-[2/1] overflow-hidden rounded-2xl bg-[#E7F5F5]"
+        aria-label={event.title}
+        onPointerDown={(pointer) => {
+          dragStart.current = pointer.clientX;
+          setPaused(true);
+        }}
+        onPointerUp={(pointer) => {
+          if (dragStart.current === null) return;
+          const delta = pointer.clientX - dragStart.current;
+          dragStart.current = null;
+          if (Math.abs(delta) > 48) {
+            swiped.current = true;
+            go(delta > 0 ? index - 1 : index + 1);
+          }
+          setPaused(false);
+        }}
+        onClick={(click) => {
+          if (!swiped.current) return;
+          swiped.current = false;
+          click.preventDefault();
+        }}
+      >
+        <Image
+          key={event.image}
+          src={event.image}
+          alt=""
+          fill
+          className="object-cover object-top"
+          sizes="100vw"
+          unoptimized
+          priority
+        />
+      </a>
+      {count > 1 ? (
+        <div className="mt-3 flex justify-center gap-1.5" role="tablist" aria-label="Active events">
+          {activeEvents.map((item, dotIndex) => (
+            <button
+              key={item.title}
+              type="button"
+              role="tab"
+              aria-label={`Show ${item.title}`}
+              aria-current={dotIndex === index ? "true" : undefined}
+              onClick={() => go(dotIndex)}
+              className={`h-1.5 rounded-full transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                dotIndex === index ? "w-5 bg-[#225475]" : "w-1.5 bg-[#225475]/30"
+              }`}
+            />
+          ))}
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
 export default function Hero() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -67,12 +154,15 @@ export default function Hero() {
       <Announcement />
       <div className="mx-auto grid w-full max-w-[1280px] flex-1 items-center gap-8 px-5 py-8 lg:grid-cols-[minmax(0,1.22fr)_minmax(0,0.78fr)] lg:gap-14 lg:px-6 lg:py-8">
         <div className="arrive">
-          <span className="inline-flex rounded-full bg-[#AFCFE4]/50 px-3.5 py-1.5 font-poppins text-base font-semibold text-[#225475]">
-            Learn · <em className="phrase mx-1 text-[#225475]">Connect</em> · Grow
-          </span>
-          <h1 className="mt-5 font-poppins text-[2.35rem] leading-[1.02] font-semibold tracking-tight text-black lg:text-[4.1rem] lg:leading-[0.98]">
-            Build a food business that <em className="phrase">lasts.</em>
-          </h1>
+          <div className="text-center lg:text-left">
+            <span className="inline-flex rounded-full bg-[#AFCFE4]/50 px-3.5 py-1.5 font-poppins text-base font-semibold text-[#225475]">
+              Learn · <em className="phrase mx-1 text-[#225475]">Connect</em> · Grow
+            </span>
+            <h1 className="mt-5 font-poppins text-[2.35rem] leading-[1.02] font-semibold tracking-tight text-black lg:text-[4.1rem] lg:leading-[0.98]">
+              Build a food business that <em className="phrase">lasts.</em>
+            </h1>
+          </div>
+          <MobileEvents />
           <p className="descriptor mt-4 max-w-[48ch] text-[#5c6b73] lg:mt-5">
             CCA Manila&apos;s Center for Food Entrepreneurship — connecting food businesses to the knowledge, experts, and industry that help them grow.
           </p>
